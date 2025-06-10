@@ -286,3 +286,7 @@ footer {
     transform: translateY(0);
   }
 }
+.featured-section,
+.about-section {
+  background: rgba(20,51,42,0.3) !important;
+}
