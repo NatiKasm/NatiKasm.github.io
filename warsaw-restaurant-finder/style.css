@@ -1,176 +1,330 @@
-// Replace image URLs with actual Google Maps photos if needed.
-const restaurants = [
-  {
-    name: "Mąka i Woda",
-    cuisine: "pizza",
-    price: "$$",
-    dine: ["eat-in", "either"],
-    lat: 52.233064,
-    lng: 21.010647,
-    image: "https://lh3.googleusercontent.com/p/AF1QipN8pGkVn9JwEyXxH6o2Wb7B9Qf7kK9P2oQv6rw=w600-h400-n-k-no",
-    description: "Trendy spot for Neapolitan-style pizzas, fresh pasta, and Italian wines."
-  },
-  {
-    name: "Youmiko Vegan Sushi",
-    cuisine: "sushi",
-    price: "$$",
-    dine: ["eat-in", "takeaway", "either"],
-    lat: 52.236664,
-    lng: 21.012049,
-    image: "https://lh3.googleusercontent.com/p/AF1QipOq3vK4Qx7uT2y9v9vR5F9Dt4ZJ3T3b_MkU6g0=w600-h400-n-k-no",
-    description: "Creative vegan sushi, cozy setting, local favorite for plant-based Japanese food."
-  },
-  {
-    name: "Lukullus",
-    cuisine: "dessert",
-    price: "$",
-    dine: ["takeaway", "either"],
-    lat: 52.224694,
-    lng: 21.003277,
-    image: "https://lh3.googleusercontent.com/p/AF1QipM2E9v9tJmw3ZtR3j3s0Q3q9R3N8A7FvNfP2w=w600-h400-n-k-no",
-    description: "Classic Warsaw patisserie famous for cakes, pastries, and chocolates."
-  },
-  {
-    name: "Vege Miasto",
-    cuisine: "vegan",
-    price: "$$",
-    dine: ["eat-in", "takeaway", "either"],
-    lat: 52.244377,
-    lng: 21.011460,
-    image: "https://lh3.googleusercontent.com/p/AF1QipN8d78Xf7Z7Rt8v7M3w8W9Vq7T3Y4v2h7U2jw=w600-h400-n-k-no",
-    description: "Popular vegan restaurant serving international and Polish-inspired dishes."
-  }
-];
-
-let map;
-let markers = [];
-
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('questionnaire');
-  const resultsSection = document.getElementById('results');
-  const restaurantList = document.getElementById('restaurant-list');
-  const mapDiv = document.getElementById('map');
-  const startOverBtn = document.getElementById('start-over');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // Get answers
-    const craving = form.elements['craving'].value;
-    const price = form.elements['price'].value;
-    const dine = form.elements['dine'].value;
-
-    // Filter restaurants
-    let matches = restaurants.filter(r =>
-      (r.cuisine === craving) &&
-      (r.price === price) &&
-      (r.dine.includes(dine) || r.dine.includes('either'))
-    );
-
-    // If too strict, relax dine filter
-    if (matches.length < 3) {
-      matches = restaurants.filter(r =>
-        (r.cuisine === craving) &&
-        (r.price === price)
-      );
-    }
-    // If still not enough, relax price too
-    if (matches.length < 3) {
-      matches = restaurants.filter(r =>
-        (r.cuisine === craving)
-      );
-    }
-    // If still not enough, show any
-    if (matches.length === 0) {
-      matches = restaurants;
-    }
-
-    // Show at most 4
-    matches = matches.slice(0, 4);
-
-    // Display cards
-    restaurantList.innerHTML = '';
-    matches.forEach((r, idx) => {
-      const card = document.createElement('div');
-      card.className = 'restaurant-card';
-      card.innerHTML = `
-        <img class="restaurant-image" src="${r.image}" alt="${r.name} photo">
-        <div class="restaurant-info">
-          <h4>${r.name}</h4>
-          <div class="restaurant-meta">${capitalize(r.cuisine)} | ${r.price} | ${r.dine.join(', ')}</div>
-          <div>${r.description}</div>
-        </div>
-      `;
-      restaurantList.appendChild(card);
-    });
-
-    // Show results and hide form
-    resultsSection.classList.remove('hidden');
-    form.classList.add('hidden');
-
-    // Display map with markers
-    setTimeout(() => {
-      showMap(matches);
-    }, 100);
-  });
-
-  startOverBtn.addEventListener('click', function() {
-    resultsSection.classList.add('hidden');
-    form.classList.remove('hidden');
-    form.reset();
-    // Remove map markers
-    if (markers.length > 0) {
-      markers.forEach(m => m.setMap(null));
-      markers = [];
-    }
-    if (map) {
-      map.setCenter({ lat: 52.2297, lng: 21.0122 });
-      map.setZoom(12);
-    }
-  });
-
-  // Initialize map on page load (Warsaw center)
-  map = new google.maps.Map(mapDiv, {
-    center: { lat: 52.2297, lng: 21.0122 },
-    zoom: 12,
-    mapTypeControl: false,
-    streetViewControl: false
-  });
-});
-
-// Utility
-function capitalize(s) {
-  return s.charAt(0).toUpperCase() + s.slice(1);
+/* General Reset and Fonts */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: #ff9100; /* Orange base */
+  color: #222;
 }
 
-// Show markers for matched restaurants
-function showMap(matches) {
-  // Remove old markers
-  if (markers.length > 0) {
-    markers.forEach(m => m.setMap(null));
-    markers = [];
-  }
+a {
+  color: #e63946;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover, .nav-links .active {
+  color: #222;
+}
 
-  let bounds = new google.maps.LatLngBounds();
-  matches.forEach(r => {
-    const marker = new google.maps.Marker({
-      position: { lat: r.lat, lng: r.lng },
-      map: map,
-      title: r.name
-    });
-    markers.push(marker);
-    const info = new google.maps.InfoWindow({
-      content: `<b>${r.name}</b><br>${capitalize(r.cuisine)}<br>${r.description}`
-    });
-    marker.addListener('click', () => {
-      info.open(map, marker);
-    });
-    bounds.extend(marker.getPosition());
-  });
-  if (matches.length) {
-    map.fitBounds(bounds);
-  } else {
-    map.setCenter({ lat: 52.2297, lng: 21.0122 });
-    map.setZoom(12);
+/* Navigation Styles */
+.main-nav {
+  background: #fff3e0;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.045);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.logo-bar {
+  display: flex;
+  align-items: center;
+  padding: 0.5em 2em;
+}
+.site-logo {
+  font-size: 2.6em;
+  margin-right: 0.6em;
+  vertical-align: middle;
+}
+.site-title {
+  font-size: 2.5em;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ff9100;
+  opacity: 0;
+  animation: fadeIn 2s ease-in forwards;
+}
+.fade-in {
+  animation: fadeIn 2s ease-in forwards;
+}
+.fade-in-delayed {
+  opacity: 0;
+  animation: fadeIn 2.2s 0.5s forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-32px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  list-style: none;
+  padding: 0.6em 0 0.6em 0;
+  background: #ffe0b2;
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+.nav-links li {
+  position: relative;
+}
+.nav-links .dropdown {
+  cursor: pointer;
+}
+.nav-links .dropdown-content {
+  display: none;
+  position: absolute;
+  background: #fffde7;
+  min-width: 160px;
+  z-index: 10;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  top: 2em;
+  left: 0;
+}
+.nav-links .dropdown:hover .dropdown-content {
+  display: block;
+}
+.nav-links .dropdown-content a {
+  color: #e65100;
+  padding: 0.7em 1.2em;
+  display: block;
+  transition: background 0.2s;
+}
+.nav-links .dropdown-content a:hover {
+  background: #ffe0b2;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero-img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  filter: brightness(0.65) blur(1.5px);
+}
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(120deg, #ff9100 50%, rgba(255,255,255,0.1) 100%);
+  opacity: 0.65;
+  z-index: 2;
+}
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: #fffbe7;
+  width: 100%;
+}
+.main-title {
+  font-size: 2.6em;
+  font-weight: 700;
+  margin-bottom: 0.3em;
+  letter-spacing: 1.5px;
+}
+.subtitle {
+  font-size: 1.3em;
+  font-weight: 400;
+  color: #fffbe7;
+}
+
+/* Section Styles */
+.section {
+  padding: 3em 1em;
+  max-width: 1200px;
+  margin: 2em auto;
+  background: #fffbe7;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+.section h2 {
+  color: #ff9100;
+  font-size: 2em;
+  margin-bottom: 1.2em;
+  text-align: center;
+}
+
+/* Quiz Section */
+.quiz-section {
+  margin-top: -3em;
+}
+.quiz-question {
+  margin-bottom: 2em;
+}
+.quiz-question p {
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  font-size: 1.15em;
+}
+.choices {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+.choice {
+  background: #ffe0b2;
+  border: 2px solid #ff9100;
+  color: #e65100;
+  font-size: 1em;
+  padding: 0.7em 1.5em;
+  border-radius: 26px;
+  cursor: pointer;
+  transition: all 0.2s;
+  outline: none;
+  font-family: inherit;
+  margin-bottom: 0.5em;
+}
+.choice.chosen, .choice:active {
+  background: #81c784;
+  color: #fff;
+  border-color: #388e3c;
+  font-weight: 700;
+}
+.quiz-result {
+  margin-top: 2em;
+  background: #fff8e1;
+  padding: 1.5em;
+  border-radius: 8px;
+  text-align: center;
+  color: #ff9100;
+  font-size: 1.2em;
+}
+
+/* Top Picks Section */
+.top-picks-section {
+  background: #fffde7;
+}
+.top-picks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2em;
+  margin-top: 2em;
+}
+.pick-card {
+  background: #ffe0b2;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.045);
+  text-align: center;
+  padding: 1.2em 0.7em;
+  transition: transform 0.14s;
+}
+.pick-card img {
+  width: 100%;
+  border-radius: 8px;
+  max-height: 110px;
+  object-fit: cover;
+}
+.pick-card h3 {
+  color: #ff9100;
+  margin-top: 0.7em;
+  margin-bottom: 0.3em;
+}
+.pick-card p {
+  color: #e65100;
+}
+
+/* Blog Section */
+.blog-section {
+  background: #fffbe7;
+}
+.blog-post {
+  margin-bottom: 2.5em;
+  background: #ffe0b2;
+  border-radius: 10px;
+  padding: 1.3em 1em;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.blog-post img {
+  width: 100%;
+  border-radius: 7px;
+  margin: 1em 0;
+}
+.blog-post h3 {
+  margin: 0 0 0.4em 0;
+  color: #ff9100;
+  font-size: 1.3em;
+}
+.blog-date {
+  color: #e65100;
+  font-size: 0.95em;
+  margin-bottom: 0.6em;
+}
+.read-more {
+  display: inline-block;
+  margin-top: 1em;
+  color: #e63946;
+  font-weight: 600;
+}
+
+/* About Section */
+.about-section {
+  background: #ffe0b2;
+  text-align: center;
+}
+.about-section img {
+  width: 200px;
+  border-radius: 50%;
+  margin-top: 1.4em;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* Footer */
+footer {
+  background: #ff9100;
+  color: #fffbe7;
+  text-align: center;
+  padding: 1em 0;
+  font-size: 1.05em;
+  letter-spacing: 1.1px;
+  margin-top: 3em;
+}
+
+/* Responsive Design */
+@media (max-width: 800px) {
+  .main-title {
+    font-size: 2em;
+  }
+  .site-title {
+    font-size: 1.5em;
+  }
+  .nav-links {
+    font-size: 1em;
+    gap: 1em;
+  }
+  .section {
+    padding: 2em 0.5em;
+  }
+}
+@media (max-width: 500px) {
+  .logo-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5em 0.7em;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 0.3em;
+    padding: 0.5em 0;
+    font-size: 0.95em;
+  }
+  .hero {
+    height: 32vh;
+    min-height: 154px;
   }
 }
