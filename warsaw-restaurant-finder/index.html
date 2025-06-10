@@ -1,62 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
   <title>Warsaw Restaurant Finder</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:600,400|Roboto:400,700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts for modern look -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>Warsaw Restaurant Finder</h1>
-    <p>Answer a few questions and we’ll help you find the perfect place to eat in Warsaw!</p>
-  </header>
-  <main>
-    <form id="questionnaire">
-      <div class="question">
-        <label>What are you craving?</label>
-        <div class="choices">
-          <label><input type="radio" name="craving" value="pizza" required> Pizza</label>
-          <label><input type="radio" name="craving" value="sushi"> Sushi</label>
-          <label><input type="radio" name="craving" value="dessert"> Dessert</label>
-          <label><input type="radio" name="craving" value="vegan"> Vegan</label>
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="logo-bar">
+      <span class="site-logo" aria-label="Home">🍽️</span>
+      <span class="site-title fade-in">Warsaw Restaurant Finder</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="#quiz-section">Quiz</a></li>
+      <li><a href="#blog-section">Blog</a></li>
+      <li><a href="#about-section">About</a></li>
+      <li class="dropdown">
+        <a href="#top-picks" class="dropbtn">Top Picks ▾</a>
+        <div class="dropdown-content">
+          <a href="#">Polish</a>
+          <a href="#">Italian</a>
+          <a href="#">Asian</a>
+          <a href="#">Vegan</a>
+          <a href="#">More...</a>
         </div>
-      </div>
-      <div class="question">
-        <label>What's your budget?</label>
-        <div class="choices">
-          <label><input type="radio" name="price" value="1" required> $ (Budget)</label>
-          <label><input type="radio" name="price" value="2"> $$ (Mid)</label>
-          <label><input type="radio" name="price" value="3"> $$$ (Fancy)</label>
-        </div>
-      </div>
-      <div class="question">
-        <label>Eat-in or Takeaway?</label>
-        <div class="choices">
-          <label><input type="radio" name="dine" value="restaurant" required> Eat-in</label>
-          <label><input type="radio" name="dine" value="takeaway"> Takeaway</label>
-          <label><input type="radio" name="dine" value="either"> Either</label>
-        </div>
-      </div>
-      <button type="submit">Find Restaurants</button>
-    </form>
+      </li>
+    </ul>
+  </nav>
 
-    <section id="results" class="hidden">
-      <h2>Your Restaurant Matches</h2>
-      <div id="restaurant-list"></div>
-      <h3>See them on the map:</h3>
-      <div id="map"></div>
-      <button id="start-over">Start Over</button>
-    </section>
-  </main>
+  <!-- Hero section with background image and animated title -->
+  <header class="hero">
+    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80" alt="Warsaw Restaurant" class="hero-img">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="main-title fade-in-delayed">Discover the Best Eats in Warsaw</h1>
+      <p class="subtitle">Find your next favorite spot—by cuisine, quiz, or mood!</p>
+    </div>
+  </header>
+
+  <!-- Quiz Section -->
+  <section id="quiz-section" class="section quiz-section">
+    <h2>Find Your Perfect Restaurant</h2>
+    <form id="restaurant-quiz">
+      <div class="quiz-question">
+        <p>1. What cuisine are you craving?</p>
+        <div class="choices">
+          <button type="button" class="choice">Polish</button>
+          <button type="button" class="choice">Italian</button>
+          <button type="button" class="choice">Asian</button>
+          <button type="button" class="choice">Vegan</button>
+        </div>
+      </div>
+      <div class="quiz-question">
+        <p>2. What's your budget?</p>
+        <div class="choices">
+          <button type="button" class="choice">💰</button>
+          <button type="button" class="choice">💰💰</button>
+          <button type="button" class="choice">💰💰💰</button>
+        </div>
+      </div>
+      <div class="quiz-question">
+        <p>3. Do you prefer casual or fine dining?</p>
+        <div class="choices">
+          <button type="button" class="choice">Casual</button>
+          <button type="button" class="choice">Fine Dining</button>
+        </div>
+      </div>
+      <div class="quiz-question">
+        <p>4. Any dietary needs?</p>
+        <div class="choices">
+          <button type="button" class="choice">None</button>
+          <button type="button" class="choice">Vegetarian</button>
+          <button type="button" class="choice">Vegan</button>
+          <button type="button" class="choice">Gluten-Free</button>
+        </div>
+      </div>
+      <div class="quiz-question">
+        <p>5. Prefer a specific area?</p>
+        <div class="choices">
+          <button type="button" class="choice">Old Town</button>
+          <button type="button" class="choice">City Center</button>
+          <button type="button" class="choice">Praga</button>
+          <button type="button" class="choice">Any</button>
+        </div>
+      </div>
+      <div class="quiz-result" id="quiz-result" style="display:none;">
+        <h3>Your recommended restaurant will appear here!</h3>
+      </div>
+    </form>
+  </section>
+
+  <!-- Top Picks Section (with placeholder images) -->
+  <section id="top-picks" class="section top-picks-section">
+    <h2>Top Picks by Cuisine</h2>
+    <div class="top-picks-grid">
+      <div class="pick-card">
+        <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80" alt="Polish Cuisine">
+        <h3>Best Polish</h3>
+        <p>Pierogi House</p>
+      </div>
+      <div class="pick-card">
+        <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Italian Cuisine">
+        <h3>Best Italian</h3>
+        <p>Pasta Mia</p>
+      </div>
+      <div class="pick-card">
+        <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80" alt="Asian Cuisine">
+        <h3>Best Asian</h3>
+        <p>Sushi World</p>
+      </div>
+      <div class="pick-card">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Vegan Cuisine">
+        <h3>Best Vegan</h3>
+        <p>Green Eats</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section (edit directly in HTML) -->
+  <section id="blog-section" class="section blog-section">
+    <h2>Blog</h2>
+    <article class="blog-post">
+      <h3>🍲 Warsaw's Hidden Gems</h3>
+      <p class="blog-date">June 2025</p>
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Restaurant Interior">
+      <p>
+        Warsaw is full of surprises! Check out our favorite under-the-radar spots for authentic flavors and cozy vibes.
+      </p>
+      <a href="#" class="read-more">Read more...</a>
+    </article>
+    <!-- Add more blog-post articles here -->
+  </section>
+
+  <!-- About Section -->
+  <section id="about-section" class="section about-section">
+    <h2>About</h2>
+    <p>
+      Warsaw Restaurant Finder is your go-to guide for discovering delicious places to eat, no matter your taste or budget. Curated by locals, for locals and visitors alike.
+    </p>
+    <img src="https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?auto=format&fit=crop&w=400&q=80" alt="About Warsaw Restaurant Finder">
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <p>Made with ❤️ for Warsaw foodies | Photos: Google Maps</p>
+    <p>&copy; 2025 Warsaw Restaurant Finder | Made with <span aria-label="love">❤️</span> in Warsaw</p>
   </footer>
-  <!-- Google Maps API (replace YOUR_API_KEY) -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
-  <script src="script.js"></script>
+
+  <!-- JavaScript for Quiz Interactivity -->
+  <script>
+    // Quiz choice highlight
+    document.querySelectorAll('.quiz-question').forEach(function(q) {
+      q.querySelectorAll('.choice').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          // Remove green from other choices in this question
+          q.querySelectorAll('.choice').forEach(function(b) {
+            b.classList.remove('chosen');
+          });
+          // Highlight selected
+          btn.classList.add('chosen');
+        });
+      });
+    });
+  </script>
 </body>
 </html>
-    
-    
