@@ -1,127 +1,176 @@
-body {
-  font-family: 'Roboto', Arial, sans-serif;
-  background: #f5f7fb;
-  color: #222;
-  margin: 0;
-  padding: 0;
-}
-header {
-  background: #1d3557;
-  color: #fff;
-  padding: 2.5rem 1rem 1rem 1rem;
-  text-align: center;
-}
-header h1 {
-  margin-top: 0;
-  font-family: 'Montserrat', Arial, sans-serif;
-  letter-spacing: 2px;
-  font-size: 2rem;
-}
-main {
-  max-width: 600px;
-  margin: 2rem auto;
-  background: #fff;
-  border-radius: 9px;
-  box-shadow: 0 2px 8px rgba(30, 52, 100, 0.10);
-  padding: 2rem 2rem 1.5rem 2rem;
-}
-form#questionnaire {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-.question label {
-  font-weight: bold;
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-.choices label {
-  font-weight: normal;
-  margin-right: 1.5rem;
-  font-size: 1rem;
-}
-button[type="submit"], #start-over {
-  background: #457b9d;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 0.7rem 1.5rem;
-  font-size: 1rem;
-  margin-top: 1.5rem;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-button[type="submit"]:hover, #start-over:hover {
-  background: #1d3557;
-}
-#results {
-  margin-top: 2rem;
-}
-#restaurant-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.2rem;
-  margin-bottom: 2rem;
-}
-.restaurant-card {
-  display: flex;
-  background: #f0f4f9;
-  border-radius: 7px;
-  overflow: hidden;
-  box-shadow: 0 1px 4px rgba(30, 52, 100, 0.07);
-}
-.restaurant-image {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-.restaurant-info {
-  padding: 0.8rem 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.restaurant-info h4 {
-  margin: 0 0 0.3rem 0;
-  font-family: 'Montserrat', Arial, sans-serif;
-}
-.restaurant-meta {
-  font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 0.4rem;
-}
-#map {
-  width: 100%;
-  height: 320px;
-  border-radius: 7px;
-  box-shadow: 0 1px 4px rgba(30, 52, 100, 0.07);
-  margin-bottom: 1.5rem;
-}
-footer {
-  text-align: center;
-  color: #888;
-  font-size: 0.97rem;
-  margin-top: 2.5rem;
-  padding-bottom: 1.2rem;
-}
-.hidden {
-  display: none;
-}
-@media (max-width: 700px) {
-  main {
-    padding: 1rem 0.5rem;
+// Replace image URLs with actual Google Maps photos if needed.
+const restaurants = [
+  {
+    name: "Mąka i Woda",
+    cuisine: "pizza",
+    price: "$$",
+    dine: ["eat-in", "either"],
+    lat: 52.233064,
+    lng: 21.010647,
+    image: "https://lh3.googleusercontent.com/p/AF1QipN8pGkVn9JwEyXxH6o2Wb7B9Qf7kK9P2oQv6rw=w600-h400-n-k-no",
+    description: "Trendy spot for Neapolitan-style pizzas, fresh pasta, and Italian wines."
+  },
+  {
+    name: "Youmiko Vegan Sushi",
+    cuisine: "sushi",
+    price: "$$",
+    dine: ["eat-in", "takeaway", "either"],
+    lat: 52.236664,
+    lng: 21.012049,
+    image: "https://lh3.googleusercontent.com/p/AF1QipOq3vK4Qx7uT2y9v9vR5F9Dt4ZJ3T3b_MkU6g0=w600-h400-n-k-no",
+    description: "Creative vegan sushi, cozy setting, local favorite for plant-based Japanese food."
+  },
+  {
+    name: "Lukullus",
+    cuisine: "dessert",
+    price: "$",
+    dine: ["takeaway", "either"],
+    lat: 52.224694,
+    lng: 21.003277,
+    image: "https://lh3.googleusercontent.com/p/AF1QipM2E9v9tJmw3ZtR3j3s0Q3q9R3N8A7FvNfP2w=w600-h400-n-k-no",
+    description: "Classic Warsaw patisserie famous for cakes, pastries, and chocolates."
+  },
+  {
+    name: "Vege Miasto",
+    cuisine: "vegan",
+    price: "$$",
+    dine: ["eat-in", "takeaway", "either"],
+    lat: 52.244377,
+    lng: 21.011460,
+    image: "https://lh3.googleusercontent.com/p/AF1QipN8d78Xf7Z7Rt8v7M3w8W9Vq7T3Y4v2h7U2jw=w600-h400-n-k-no",
+    description: "Popular vegan restaurant serving international and Polish-inspired dishes."
   }
-  .restaurant-card {
-    flex-direction: column;
-    align-items: center;
+];
+
+let map;
+let markers = [];
+
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('questionnaire');
+  const resultsSection = document.getElementById('results');
+  const restaurantList = document.getElementById('restaurant-list');
+  const mapDiv = document.getElementById('map');
+  const startOverBtn = document.getElementById('start-over');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Get answers
+    const craving = form.elements['craving'].value;
+    const price = form.elements['price'].value;
+    const dine = form.elements['dine'].value;
+
+    // Filter restaurants
+    let matches = restaurants.filter(r =>
+      (r.cuisine === craving) &&
+      (r.price === price) &&
+      (r.dine.includes(dine) || r.dine.includes('either'))
+    );
+
+    // If too strict, relax dine filter
+    if (matches.length < 3) {
+      matches = restaurants.filter(r =>
+        (r.cuisine === craving) &&
+        (r.price === price)
+      );
+    }
+    // If still not enough, relax price too
+    if (matches.length < 3) {
+      matches = restaurants.filter(r =>
+        (r.cuisine === craving)
+      );
+    }
+    // If still not enough, show any
+    if (matches.length === 0) {
+      matches = restaurants;
+    }
+
+    // Show at most 4
+    matches = matches.slice(0, 4);
+
+    // Display cards
+    restaurantList.innerHTML = '';
+    matches.forEach((r, idx) => {
+      const card = document.createElement('div');
+      card.className = 'restaurant-card';
+      card.innerHTML = `
+        <img class="restaurant-image" src="${r.image}" alt="${r.name} photo">
+        <div class="restaurant-info">
+          <h4>${r.name}</h4>
+          <div class="restaurant-meta">${capitalize(r.cuisine)} | ${r.price} | ${r.dine.join(', ')}</div>
+          <div>${r.description}</div>
+        </div>
+      `;
+      restaurantList.appendChild(card);
+    });
+
+    // Show results and hide form
+    resultsSection.classList.remove('hidden');
+    form.classList.add('hidden');
+
+    // Display map with markers
+    setTimeout(() => {
+      showMap(matches);
+    }, 100);
+  });
+
+  startOverBtn.addEventListener('click', function() {
+    resultsSection.classList.add('hidden');
+    form.classList.remove('hidden');
+    form.reset();
+    // Remove map markers
+    if (markers.length > 0) {
+      markers.forEach(m => m.setMap(null));
+      markers = [];
+    }
+    if (map) {
+      map.setCenter({ lat: 52.2297, lng: 21.0122 });
+      map.setZoom(12);
+    }
+  });
+
+  // Initialize map on page load (Warsaw center)
+  map = new google.maps.Map(mapDiv, {
+    center: { lat: 52.2297, lng: 21.0122 },
+    zoom: 12,
+    mapTypeControl: false,
+    streetViewControl: false
+  });
+});
+
+// Utility
+function capitalize(s) {
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+// Show markers for matched restaurants
+function showMap(matches) {
+  // Remove old markers
+  if (markers.length > 0) {
+    markers.forEach(m => m.setMap(null));
+    markers = [];
   }
-  .restaurant-image {
-    width: 100%;
-    height: 180px;
-  }
-  .restaurant-info {
-    padding: 0.7rem 1rem 1rem 1rem;
+
+  let bounds = new google.maps.LatLngBounds();
+  matches.forEach(r => {
+    const marker = new google.maps.Marker({
+      position: { lat: r.lat, lng: r.lng },
+      map: map,
+      title: r.name
+    });
+    markers.push(marker);
+    const info = new google.maps.InfoWindow({
+      content: `<b>${r.name}</b><br>${capitalize(r.cuisine)}<br>${r.description}`
+    });
+    marker.addListener('click', () => {
+      info.open(map, marker);
+    });
+    bounds.extend(marker.getPosition());
+  });
+  if (matches.length) {
+    map.fitBounds(bounds);
+  } else {
+    map.setCenter({ lat: 52.2297, lng: 21.0122 });
+    map.setZoom(12);
   }
 }
