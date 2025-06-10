@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AMN (Audit Me Not) | Auditing & Financial Consulting</title>
+  <title>AMN  | Auditing & Financial Consulting</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:700,900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
@@ -240,3 +240,153 @@
       box-shadow: 0 2px 8px rgba(26,35,126,0.07);
       transition: background 0.18s;
       font-family: "Montserrat",
+
+              sans-serif;
+    }
+    .stack-item:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+    .contact-preview {
+      margin: 1.5rem 0 0 0;
+      text-align: center;
+    }
+    .contact-btn {
+      background: var(--primary-light);
+      color: #fff;
+      border: none;
+      padding: 0.9rem 2.1rem;
+      border-radius: 0.5rem;
+      font-size: 1.1rem;
+      font-family: 'Montserrat',sans-serif;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 1.3rem;
+      box-shadow: 0 4px 18px rgba(26,35,126,0.09);
+      transition: background 0.2s, color 0.2s, transform 0.18s;
+      display: inline-block;
+    }
+    .contact-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-2px) scale(1.04);
+    }
+    footer {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem 1.2rem 1rem;
+      font-size: 1.08rem;
+      letter-spacing: 0.5px;
+      margin-top: 2rem;
+      border-radius: 1.3rem 1.3rem 0 0;
+      box-shadow: 0 -2px 16px rgba(26,35,126,0.07);
+    }
+    @media (max-width: 900px) {
+      .hero { flex-direction: column; }
+      section { padding: 1.5rem 0.7rem; }
+      .services-list { flex-direction: column; gap: 1.1rem;}
+    }
+    @media (max-width: 600px) {
+      .hero-text h1 { font-size: 2rem; }
+      .hero-text p { font-size: 1rem; }
+      .logo { font-size: 1.3rem; }
+      header, footer { padding: 1rem; }
+      .section-title { font-size: 1.2rem;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=facearea&w=256&q=80" alt="AMN Logo" />
+      AMN (Audit Me Not)
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#stack">Tech Stack</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Audit Me Not</h1>
+      <p>Audit smarter. Stress less.<br/> Modern auditing & consulting for forward-thinking businesses.</p>
+      <a href="#contact" class="button">Request a Consultation</a>
+    </div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1556742047-1b84c6e6eab1?auto=format&fit=crop&w=600&q=80" alt="Business meeting"/>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-title">About Us</div>
+    <div class="about-text">
+      <p>
+        <b>AMN (Audit Me Not)</b> is a modern auditing and consulting firm dedicated to helping organizations thrive in an ever-evolving business landscape.
+        We combine deep industry expertise with innovative technology to deliver accurate, efficient, and insightful financial audits, compliance strategies, and business advice.
+        <br><br>
+        Our mission is to make auditing stress-free, transparent, and valuable for every client — from startups to enterprises.
+      </p>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="section-title">Our Services</div>
+    <div class="services-list">
+      <div class="service-card">
+        <h3>Financial Auditing</h3>
+        <p>In-depth, accurate, and efficient financial audits for organizations of all sizes.</p>
+      </div>
+      <div class="service-card">
+        <h3>Compliance Consulting</h3>
+        <p>Expert guidance on statutory, tax, and regulatory compliance to keep your business on track.</p>
+      </div>
+      <div class="service-card">
+        <h3>Process Optimization</h3>
+        <p>Analyze and enhance your business processes for improved efficiency and reduced risk.</p>
+      </div>
+      <div class="service-card">
+        <h3>Risk Assessment</h3>
+        <p>Identify, evaluate, and mitigate risks with tailored strategies and digital tools.</p>
+      </div>
+      <div class="service-card">
+        <h3>Growth Advisory</h3>
+        <p>Strategic advice to help your business scale, innovate, and maximize profitability.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="section-title">Our Tech Stack</div>
+    <div class="stack-list">
+      <div class="stack-item">HTML5</div>
+      <div class="stack-item">CSS3</div>
+      <div class="stack-item">JavaScript</div>
+      <div class="stack-item">React.js</div>
+      <div class="stack-item">Next.js</div>
+      <div class="stack-item">Tailwind CSS</div>
+      <div class="stack-item">Node.js</div>
+      <div class="stack-item">Git & GitHub</div>
+      <div class="stack-item">Figma</div>
+      <div class="stack-item">REST APIs</div>
+      <div class="stack-item">Vercel</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-title">Contact Us</div>
+    <div class="contact-preview">
+      <p>Ready to start your audit journey or have questions? Reach out today!</p>
+      <a class="contact-btn" href="mailto:info@amnfirm.com">Email Us</a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 AMN. All rights reserved. | Designed by NatiKasm
+  </footer>
+</body>
+</html>
