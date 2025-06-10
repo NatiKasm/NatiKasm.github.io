@@ -4,14 +4,14 @@ body, html {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', Arial, sans-serif;
-  background: #ff9100; /* Orange base */
+  background: #006400; /* dark green */
   color: #222;
 }
 
 a {
   color: #e63946;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.5s;
 }
 a:hover, .nav-links .active {
   color: #222;
@@ -19,7 +19,7 @@ a:hover, .nav-links .active {
 
 /* Navigation Styles */
 .main-nav {
-  background: #fff3e0;
+  background: 000;
   box-shadow: 0 3px 8px rgba(0,0,0,0.045);
   display: flex;
   flex-direction: column;
