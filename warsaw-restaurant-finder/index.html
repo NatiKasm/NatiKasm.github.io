@@ -1,1 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Warsaw Restaurant Finder</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:600,400|Roboto:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Warsaw Restaurant Finder</h1>
+    <p>Answer a few questions and we’ll help you find the perfect place to eat in Warsaw!</p>
+  </header>
+  <main>
+    <form id="questionnaire">
+      <div class="question">
+        <label>What are you craving?</label>
+        <div class="choices">
+          <label><input type="radio" name="craving" value="pizza" required> Pizza</label>
+          <label><input type="radio" name="craving" value="sushi"> Sushi</label>
+          <label><input type="radio" name="craving" value="dessert"> Dessert</label>
+          <label><input type="radio" name="craving" value="vegan"> Vegan</label>
+        </div>
+      </div>
+      <div class="question">
+        <label>What's your budget?</label>
+        <div class="choices">
+          <label><input type="radio" name="price" value="1" required> $ (Budget)</label>
+          <label><input type="radio" name="price" value="2"> $$ (Mid)</label>
+          <label><input type="radio" name="price" value="3"> $$$ (Fancy)</label>
+        </div>
+      </div>
+      <div class="question">
+        <label>Eat-in or Takeaway?</label>
+        <div class="choices">
+          <label><input type="radio" name="dine" value="restaurant" required> Eat-in</label>
+          <label><input type="radio" name="dine" value="takeaway"> Takeaway</label>
+          <label><input type="radio" name="dine" value="either"> Either</label>
+        </div>
+      </div>
+      <button type="submit">Find Restaurants</button>
+    </form>
 
+    <section id="results" class="hidden">
+      <h2>Your Restaurant Matches</h2>
+      <div id="restaurant-list"></div>
+      <h3>See them on the map:</h3>
+      <div id="map"></div>
+      <button id="start-over">Start Over</button>
+    </section>
+  </main>
+  <footer>
+    <p>Made with ❤️ for Warsaw foodies | Photos: Google Maps</p>
+  </footer>
+  <!-- Google Maps API (replace YOUR_API_KEY) -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+  <script src="script.js"></script>
+</body>
+</html>
