@@ -1,1 +1,242 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AMN (Audit Me Not) | Auditing & Financial Consulting</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1A237E;
+      --primary-light: #3949AB;
+      --accent: #0CB1C7;
+      --background: #F4F7FB;
+      --card-bg: #fff;
+      --text: #1A237E;
+      --text-light: #3949AB;
+      --shadow: 0 8px 32px rgba(26,35,126,0.10);
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Open Sans', Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      animation: fadeIn 1s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 1.5rem 2rem 1rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      font-family: "Montserrat", sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .logo img {
+      width: 44px;
+      height: 44px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      background: #fff;
+    }
+    nav {
+      margin: 1.3rem 0 0.5rem 0;
+      font-family: "Montserrat", sans-serif;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 1.2rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      padding: 4px 0;
+      position: relative;
+      transition: color 0.2s;
+    }
+    nav a:after {
+      content: "";
+      display: block;
+      margin: 0 auto;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    nav a:hover {
+      color: var(--accent);
+    }
+    nav a:hover:after {
+      width: 100%;
+    }
+    .hero {
+      background: linear-gradient(120deg, var(--primary) 55%, var(--accent) 100%);
+      color: #fff;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      min-height: 68vh;
+      padding: 2.5rem 1rem 1.5rem 1rem;
+      gap: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+    .hero-text {
+      flex: 1 1 320px;
+      min-width: 260px;
+      max-width: 500px;
+      z-index: 1;
+    }
+    .hero-text h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 0.7rem;
+      letter-spacing: 1.5px;
+    }
+    .hero-text p {
+      font-size: 1.3rem;
+      color: #d1eaff;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+    .hero-text .button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 1rem 2.2rem;
+      border-radius: 0.5rem;
+      font-size: 1.13rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(26,35,126,0.08);
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+      margin-top: 0.7rem;
+    }
+    .hero-text .button:hover {
+      background: #fff;
+      color: var(--accent);
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 6px 32px rgba(12,177,199,0.18);
+    }
+    .hero-img {
+      flex: 1 1 320px;
+      min-width: 250px;
+      max-width: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 0;
+      animation: fadeInHero 1.3s cubic-bezier(.4,2,.2,1);
+    }
+    @keyframes fadeInHero {
+      from { opacity: 0; transform: scale(1.1);}
+      to { opacity: 1; transform: scale(1);}
+    }
+    .hero-img img {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 18px;
+      box-shadow: 0 6px 40px rgba(26,35,126,0.13);
+      opacity: 0.96;
+    }
+    section {
+      margin: 0 auto 2.8rem auto;
+      max-width: 1100px;
+      padding: 2rem 1.4rem 1.4rem 1.4rem;
+      background: var(--card-bg);
+      border-radius: 1.4rem;
+      box-shadow: var(--shadow);
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1.45rem;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+    .about-text {
+      font-size: 1.15rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .services-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.7rem;
+      justify-content: center;
+      margin: 2rem 0 0 0;
+    }
+    .service-card {
+      background: var(--background);
+      border-radius: 1.1rem;
+      box-shadow: 0 2px 18px rgba(28,40,126,0.08);
+      padding: 2.1rem 1.6rem;
+      min-width: 220px;
+      max-width: 300px;
+      flex: 1 1 220px;
+      text-align: center;
+      transition: transform 0.18s, box-shadow 0.18s;
+      font-size: 1rem;
+    }
+    .service-card:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 8px 36px rgba(12,177,199,0.19);
+      background: #e9f9fc;
+    }
+    .service-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 0.7rem;
+    }
+    .service-card p {
+      color: var(--primary-light);
+      font-size: 1rem;
+      margin: 0;
+    }
+    .stack-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
+      margin-top: 1.2rem;
+    }
+    .stack-item {
+      background: #e3eafd;
+      color: var(--text);
+      font-weight: 700;
+      padding: 0.7rem 1.2rem;
+      border-radius: 2rem;
+      font-size: 1.03rem;
+      box-shadow: 0 2px 8px rgba(26,35,126,0.07);
+      transition: background 0.18s;
+      font-family: "Montserrat",
