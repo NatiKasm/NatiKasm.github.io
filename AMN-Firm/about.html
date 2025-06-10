@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | AMN (Audit Me Not)</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1A237E;
+      --primary-light: #3949AB;
+      --accent: #0CB1C7;
+      --background: #F4F7FB;
+      --card-bg: #fff;
+      --text: #1A237E;
+      --text-light: #3949AB;
+      --shadow: 0 8px 32px rgba(26,35,126,0.10);
+    }
+    body {
+      margin: 0;
+      font-family: 'Open Sans', Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      animation: fadeIn 1s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 1.5rem 2rem 1rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      font-family: "Montserrat", sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .logo img {
+      width: 44px;
+      height: 44px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      background: #fff;
+    }
+    nav {
+      margin: 1.3rem 0 0.5rem 0;
+      font-family: "Montserrat", sans-serif;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 1.2rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      padding: 4px 0;
+      position: relative;
+      transition: color 0.2s;
+    }
+    nav a:after {
+      content: "";
+      display: block;
+      margin: 0 auto;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    nav a:hover {
+      color: var(--accent);
+    }
+    nav a:hover:after {
+      width: 100%;
+    }
+    .about-hero {
+      background: linear-gradient(120deg, var(--primary) 60%, var(--accent) 100%);
+      color: #fff;
+      padding: 4rem 1rem 2rem 1rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .about-hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 0.6rem;
+      letter-spacing: 1.2px;
+    }
+    .about-hero p {
+      font-size: 1.25rem;
+      color: #E0E7FF;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+    .about-main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 2.5rem;
+      background: var(--background);
+      padding: 3rem 1rem 2rem 1rem;
+      max-width: 1100px;
+      margin: 2rem auto 0 auto;
+      border-radius: 1.1rem;
+      box-shadow: var(--shadow);
+    }
+    .about-img {
+      flex: 1 1 300px;
+      min-width: 240px;
+      max-width: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-img img {
+      width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 4px 24px rgba(26,35,126,0.11);
+      object-fit: cover;
+    }
+    .about-content {
+      flex: 2 1 340px;
+      min-width: 260px;
+      font-size: 1.1rem;
+      color: var(--text-light);
+    }
+    .about-content h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+    }
+    .about-values {
+      margin-top: 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.3rem;
+    }
+    .value-card {
+      background: var(--card-bg);
+      padding: 1.1rem 1.3rem;
+      border-radius: 0.8rem;
+      box-shadow: 0 2px 12px rgba(26,35,126,0.08);
+      min-width: 170px;
+      max-width: 260px;
+      flex: 1 1 170px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .value-card:hover {
+      transform: scale(1.04) translateY(-4px);
+      background: #e6f2fc;
+    }
+    .value-card h3 {
+      color: var(--primary-light);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+    footer {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem 1.2rem 1rem;
+      font-size: 1.08rem;
+      letter-spacing: 0.5px;
+      margin-top: 2rem;
+      border-radius: 1.3rem 1.3rem 0 0;
+      box-shadow: 0 -2px 16px rgba(26,35,126,0.07);
+    }
+    @media (max-width: 900px) {
+      .about-main { flex-direction: column; gap: 2rem;}
+    }
+    @media (max-width: 600px) {
+      .about-hero h1 { font-size: 1.4rem; }
+      .about-hero p { font-size: 1rem; }
+      .logo { font-size: 1.3rem; }
+      header, footer { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=facearea&w=256&q=80" alt="AMN Logo" />
+      AMN (Audit Me Not)
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <section class="about-hero">
+    <h1>About AMN (Audit Me Not)</h1>
+    <p>
+      We are committed to revolutionizing the audit and consulting experience for modern businesses. Our mission is to deliver clarity, efficiency, and real value—empowered by expertise and technology.
+    </p>
+  </section>
+
+  <section class="about-main">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=600&q=80" alt="Our Team" />
+    </div>
+    <div class="about-content">
+      <h2>Who We Are</h2>
+      <p>
+        AMN (Audit Me Not) is a team of passionate auditors, consultants, and technologists dedicated to making audits less stressful and more insightful. 
+        Our roots are in deep industry experience, and our vision is future-focused: to blend the best of professional wisdom with the latest technology.
+      </p>
+      <h2>Our Values</h2>
+      <div class="about-values">
+        <div class="value-card">
+          <h3>Integrity</h3>
+          <p>We uphold the highest ethical standards in everything we do.</p>
+        </div>
+        <div class="value-card">
+          <h3>Transparency</h3>
+          <p>Open communication and honesty with clients and team members.</p>
+        </div>
+        <div class="value-card">
+          <h3>Innovation</h3>
+          <p>Leveraging new technologies for smarter, faster audits.</p>
+        </div>
+        <div class="value-card">
+          <h3>Client Focus</h3>
+          <p>Your needs, goals, and success are at the heart of our work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    &copy; 2025 AMN (Audit Me Not). All rights reserved. | Designed by NatiKasm
+  </footer>
+</body>
+</html>
