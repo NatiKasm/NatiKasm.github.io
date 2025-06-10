@@ -1,54 +1,121 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Natasha Murasira - Portfolio</title>
+  <title>Natasha Kasm - Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Montserrat for headings, Open Sans for body -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background: #f9f9f9; color: #222; }
-    .container { max-width: 700px; margin: 40px auto; background: #fff; padding: 2rem 2.5rem; border-radius: 8px; box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
-    h1 { margin-top: 0; }
-    .bio { margin-bottom: 2rem; }
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fa; /* Very light gray-blue */
+      color: #23272f; /* Dark blue-gray for text */
+    }
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 2rem 2.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 24px rgba(35,39,47,0.08);
+    }
+    h1, h2 {
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: #1d3557; /* Deep blue for headings */
+    }
+    h1 {
+      margin-top: 0;
+      font-size: 2.3rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    h2 {
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .bio {
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      color: #2d3142; /* Soft dark for bio */
+    }
+    .skills ul, .projects ul {
+      padding-left: 1.2rem;
+      margin-top: 0.3rem;
+    }
+    .skills li {
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-size: 1rem;
+      color: #364156;
+      margin-bottom: 0.25rem;
+    }
     .projects { margin-bottom: 2rem; }
-    .project { margin-bottom: 1.5rem; }
-    .project-title { font-weight: bold; font-size: 1.2rem; }
-    .skills { margin-bottom: 2rem; }
+    .project {
+      margin-bottom: 1.5rem;
+      background: #f0f4f9;
+      padding: 1rem 1.2rem;
+      border-radius: 6px;
+    }
+    .project-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #1d3557;
+      margin-bottom: 0.3rem;
+    }
+    .project-desc {
+      font-size: 1rem;
+      color: #364156;
+    }
     .contact { margin-top: 2rem; }
-    a { color: #0396d6; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    .contact a {
+      color: #457b9d;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact a:hover { text-decoration: underline; }
     @media (max-width: 600px) {
       .container { padding: 1rem; }
+      h1 { font-size: 1.4rem; }
+      h2 { font-size: 1.1rem; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Natasha Kasumi</h1>
+    <h1>Natasha Kasm</h1>
     <div class="bio">
-      <p>Hello! I'm <strong>Natasha Kasumi</strong>, a passionate developer. Welcome to my portfolio! Here you can find out more about my skills and some of the projects I've worked on.</p>
+      <p>Hello! I'm <strong>Natasha</strong>, a junior web developer with a passion for helping SMEs maintain their online presence in the modern era. I enjoy golf, literature, and writing, and have collaborated with startup founders and executives across EMEA. Let's build something great together!</p>
     </div>
     <div class="skills">
       <h2>Skills</h2>
       <ul>
         <li>HTML, CSS, JavaScript</li>
         <li>React, Node.js</li>
-        <li>Git & GitHub</li>
-        <li>Other tools/frameworks...</li>
+        <li>Responsive Web Design</li>
+        <li>Git & GitHub (version control, collaboration, issues, pull requests, GitHub Pages)</li>
+        <li>Markdown for documentation</li>
+        <li>Project management with GitHub Projects</li>
+        <li>GitHub Actions (basic CI/CD)</li>
+        <li>Basic SEO</li>
       </ul>
     </div>
     <div class="projects">
       <h2>Projects</h2>
       <div class="project">
-        <div class="project-title"><a href="https://github.com/NatiKasm/sample-project" target="_blank">Sample Project</a></div>
-        <div class="project-desc">Short description of your project. What did you build? What technologies did you use?</div>
+        <div class="project-title">Coming Soon!</div>
+        <div class="project-desc">I'll be adding exciting projects here as I explore new ideas and build solutions. Stay tuned!</div>
       </div>
-      <!-- Add more projects here -->
     </div>
     <div class="contact">
       <h2>Contact</h2>
       <p>
-        Email: <a href="mailto:emaail@example.com">info@natashakas.com</a><br>
+        Email: <a href="mailto:info@natashakas.com">info@natashakas.com</a><br>
         GitHub: <a href="https://github.com/NatiKasm" target="_blank">NatiKasm</a>
       </p>
     </div>
