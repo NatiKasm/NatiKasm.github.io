@@ -3,11 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Warsaw Restaurant Finder</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+  <!-- 1. Leaflet CSS (put this inside <head>) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    /* 2. Map container style (inside <head> or an external CSS) */
+    #map { height: 400px; width: 100%; }
+  </style>
 </head>
 <body>
+  <h1>Warsaw Restaurant Finder</h1>
+  <!-- 3. Map container (put this where you want the map to appear, usually near top of <body>) -->
+  <div id="map"></div>
+
+  <!-- 4. Leaflet JS (put before your custom JS) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- 5. Your custom script (put after Leaflet JS, at the end of <body>) -->
+  <script src="script.js"></script>
+</body>
+</html>
   <!-- Navigation -->
   <nav class="main-nav">
     <div class="logo-bar">
