@@ -9,8 +9,8 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #1A237E;
-      --primary-light: #3949AB;
+       --primary: #0D1333;           /* Much darker blue */
+     --primary-light: #1A237E;     /* Old primary, now used as light version */
       --accent: #0CB1C7;
       --background: #F4F7FB;
       --card-bg: #fff;
@@ -22,25 +22,31 @@
       scroll-behavior: smooth;
     }
     body {
-      margin: 0;
-      font-family: 'Open Sans', Arial, sans-serif;
-      background: var(--background);
-      color: var(--text);
+    margin: 0;
+   font-family: 'Open Sans', Arial, sans-serif;
+    background: var(--background);
+     color: var(--text);
       animation: fadeIn 1s ease;
-    }
+     padding-top: 92px;
+  }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px);}
       to { opacity: 1; transform: translateY(0);}
-    }
-    header {
-      background: var(--primary);
-      color: #fff;
-      padding: 1.5rem 2rem 1rem 2rem;
-      text-align: center;
-      box-shadow: var(--shadow);
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      @keyframes slideDown {
+  from { transform: translateY(-80px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+ header {
+background: var(--primary);
+ color: #fff;
+ padding: 1.5rem 2rem 1rem 2rem;
+ text-align: center;
+box-shadow: var(--shadow);
+ position: sticky;
+ top: 0;
+z-index: 10;
+ animation: slideDown 0.8s cubic-bezier(.77,0,.18,1);
+  }
     }
     .logo {
       font-family: "Montserrat", sans-serif;
