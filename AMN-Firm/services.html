@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services | AMN (Audit Me Not)</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1A237E;
+      --primary-light: #3949AB;
+      --accent: #0CB1C7;
+      --background: #F4F7FB;
+      --card-bg: #fff;
+      --text: #1A237E;
+      --text-light: #3949AB;
+      --shadow: 0 8px 32px rgba(26,35,126,0.10);
+    }
+    body {
+      margin: 0;
+      font-family: 'Open Sans', Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      animation: fadeIn 1s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 1.5rem 2rem 1rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      font-family: "Montserrat", sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .logo img {
+      width: 44px;
+      height: 44px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      background: #fff;
+    }
+    nav {
+      margin: 1.3rem 0 0.5rem 0;
+      font-family: "Montserrat", sans-serif;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 1.2rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      padding: 4px 0;
+      position: relative;
+      transition: color 0.2s;
+    }
+    nav a:after {
+      content: "";
+      display: block;
+      margin: 0 auto;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    nav a:hover {
+      color: var(--accent);
+    }
+    nav a:hover:after {
+      width: 100%;
+    }
+    .services-hero {
+      background: linear-gradient(120deg, var(--primary) 60%, var(--accent) 100%);
+      color: #fff;
+      padding: 4rem 1rem 2rem 1rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .services-hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 0.6rem;
+      letter-spacing: 1.2px;
+    }
+    .services-hero p {
+      font-size: 1.25rem;
+      color: #E0E7FF;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+    .services-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      align-items: stretch;
+      padding: 3rem 1rem 2rem 1rem;
+      max-width: 1100px;
+      margin: 2rem auto 0 auto;
+    }
+    .service-card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      box-shadow: 0 4px 24px rgba(26,35,126,0.11);
+      padding: 2rem 1.5rem;
+      min-width: 230px;
+      max-width: 330px;
+      flex: 1 1 230px;
+      text-align: center;
+      transition: transform 0.2s, background 0.2s;
+      color: var(--primary-light);
+    }
+    .service-card:hover {
+      transform: scale(1.04) translateY(-4px);
+      background: #e6f2fc;
+      color: var(--primary);
+    }
+    .service-card h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.7rem;
+      color: var(--primary);
+    }
+    .service-card p {
+      font-size: 1.06rem;
+      color: var(--text-light);
+    }
+    .service-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.3rem;
+      color: var(--accent);
+    }
+    footer {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem 1.2rem 1rem;
+      font-size: 1.08rem;
+      letter-spacing: 0.5px;
+      margin-top: 2rem;
+      border-radius: 1.3rem 1.3rem 0 0;
+      box-shadow: 0 -2px 16px rgba(26,35,126,0.07);
+    }
+    @media (max-width: 900px) {
+      .services-list { flex-direction: column; gap: 1.1rem;}
+    }
+    @media (max-width: 600px) {
+      .services-hero h1 { font-size: 1.4rem; }
+      .services-hero p { font-size: 1rem; }
+      .logo { font-size: 1.3rem; }
+      header, footer { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=facearea&w=256&q=80" alt="AMN Logo" />
+      AMN (Audit Me Not)
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="services-hero">
+    <h1>Our Services</h1>
+    <p>
+      We tailor our expertise to meet your needs, offering a full suite of auditing and business consulting services designed to empower and protect your organization.
+    </p>
+  </section>
+  <section class="services-list">
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h2>Financial Auditing</h2>
+      <p>In-depth, accurate, and efficient financial audits for organizations of all sizes. Our process is transparent and focused on actionable recommendations.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📝</div>
+      <h2>Compliance Consulting</h2>
+      <p>Expert guidance on statutory, tax, and regulatory compliance to keep your business on track and prepared for changes in legislation.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚙️</div>
+      <h2>Process Optimization</h2>
+      <p>Analyze and enhance your business processes for improved efficiency, reduced error, and greater growth potential.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛡️</div>
+      <h2>Risk Assessment</h2>
+      <p>Identify, evaluate, and mitigate risks with tailored strategies and digital tools for your unique business landscape.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🚀</div>
+      <h2>Growth Advisory</h2>
+      <p>Strategic advice to help your business scale, innovate, and maximize profitability in a fast-changing environment.</p>
+    </div>
+  </section>
+  <footer>
+    &copy; 2025 AMN (Audit Me Not). All rights reserved. | Designed by NatiKasm
+  </footer>
+</body>
+</html>
