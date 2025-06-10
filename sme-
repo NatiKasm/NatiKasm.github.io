@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SME Website Health Checker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>SME Website Health Checker</h1>
+    <p>Enter a website URL to check its health and best practices!</p>
+    <form id="checkForm">
+      <input type="url" id="urlInput" placeholder="https://example.com" required>
+      <button type="submit">Check Website</button>
+    </form>
+    <div id="results"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
