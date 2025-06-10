@@ -5,7 +5,6 @@
   <title>Warsaw Restaurant Finder</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
-  <!-- Google Fonts for modern look -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -17,23 +16,12 @@
     </div>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="#quiz-section">Quiz</a></li>
-      <li><a href="#blog-section">Blog</a></li>
-      <li><a href="#about-section">About</a></li>
-      <li class="dropdown">
-        <a href="#top-picks" class="dropbtn">Top Picks ▾</a>
-        <div class="dropdown-content">
-          <a href="#">Polish</a>
-          <a href="#">Italian</a>
-          <a href="#">Asian</a>
-          <a href="#">Vegan</a>
-          <a href="#">More...</a>
-        </div>
-      </li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
     </ul>
   </nav>
 
-  <!-- Hero section with background image and animated title -->
+  <!-- Hero section -->
   <header class="hero">
     <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80" alt="Warsaw Restaurant" class="hero-img">
     <div class="hero-overlay"></div>
@@ -56,46 +44,13 @@
           <button type="button" class="choice">Vegan</button>
         </div>
       </div>
-      <div class="quiz-question">
-        <p>2. What's your budget?</p>
-        <div class="choices">
-          <button type="button" class="choice">20 zl - 60 zl </button>
-          <button type="button" class="choice">60 zl - 100 zl </button>
-          <button type="button" class="choice">100 zl - 200 zl+</button>
-        </div>
-      </div>
-      <div class="quiz-question">
-        <p>3. Do you prefer casual or fine dining?</p>
-        <div class="choices">
-          <button type="button" class="choice">Casual</button>
-          <button type="button" class="choice">Fine Dining</button>
-        </div>
-      </div>
-      <div class="quiz-question">
-        <p>4. Any dietary needs?</p>
-        <div class="choices">
-          <button type="button" class="choice">None</button>
-          <button type="button" class="choice">Vegetarian</button>
-          <button type="button" class="choice">Vegan</button>
-          <button type="button" class="choice">Gluten-Free</button>
-        </div>
-      </div>
-      <div class="quiz-question">
-        <p>5. Prefer a specific area?</p>
-        <div class="choices">
-          <button type="button" class="choice">Old Town</button>
-          <button type="button" class="choice">City Center</button>
-          <button type="button" class="choice">Praga</button>
-          <button type="button" class="choice">Any</button>
-        </div>
-      </div>
-      <div class="quiz-result" id="quiz-result" style="display:none;">
-        <h3>Your recommended restaurant will appear here!</h3>
-      </div>
+      <button type="submit" style="margin-top:20px;">Find Restaurants</button>
+      <div class="quiz-result" id="quiz-result" style="display:none;"></div>
     </form>
+    <div id="map" style="width:100%;height:400px;margin-top:2em;border-radius:10px;"></div>
   </section>
 
-  <!-- Top Picks Section (with placeholder images) -->
+  <!-- Top Picks Section -->
   <section id="top-picks" class="section top-picks-section">
     <h2>Top Picks by Cuisine</h2>
     <div class="top-picks-grid">
@@ -122,50 +77,12 @@
     </div>
   </section>
 
-  <!-- Blog Section (edit directly in HTML) -->
-  <section id="blog-section" class="section blog-section">
-    <h2>Blog</h2>
-    <article class="blog-post">
-      <h3>🍲 Warsaw's Michelin Star Restaurants</h3>
-      <p class="blog-date">June 2025</p>
-      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Restaurant Interior">
-      <p>
-        Warsaw is full of surprises! Check out our favorite under-the-radar spots for authentic flavors and cozy vibes.
-      </p>
-      <a href="#" class="read-more">Read more...</a>
-    </article>
-    <!-- Add more blog-post articles here -->
-  </section>
-
-  <!-- About Section -->
-  <section id="about-section" class="section about-section">
-    <h2>About</h2>
-    <p>
-      Warsaw Restaurant Finder is your go-to guide for discovering delicious places to eat, no matter your taste or budget. Curated by locals, for locals and visitors alike.
-    </p>
-    <img src="https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?auto=format&fit=crop&w=400&q=80" alt="About Warsaw Restaurant Finder">
-  </section>
-
-  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Warsaw Restaurant Finder | Made with <span aria-label="love">❤️</span> in Warsaw</p>
   </footer>
-
-  <!-- JavaScript for Quiz Interactivity -->
-  <script>
-    // Quiz choice highlight
-    document.querySelectorAll('.quiz-question').forEach(function(q) {
-      q.querySelectorAll('.choice').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          // Remove green from other choices in this question
-          q.querySelectorAll('.choice').forEach(function(b) {
-            b.classList.remove('chosen');
-          });
-          // Highlight selected
-          btn.classList.add('chosen');
-        });
-      });
-    });
+  <script src="script.js"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&libraries=places&callback=initMap">
   </script>
 </body>
 </html>
