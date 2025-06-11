@@ -9,23 +9,14 @@
       margin: 0;
       font-family: 'Comic Sans MS', cursive, sans-serif;
       color: #fff0f5;
-      /* Glittery pink gradient as background */
-      background: linear-gradient(135deg, #ffb6e0 0%, #ff69b4 100%);
+      /* Baby blue gradient */
+      background: linear-gradient(135deg, #b3e0ff 0%, #87cefa 100%);
       position: relative;
       overflow: hidden;
     }
-    /* Glitter overlay using a repeating PNG pattern */
+    /* Remove glitter overlay */
     body::before {
-      content: "";
-      pointer-events: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: 0;
-      opacity: 0.4;
-      background-image: url('https://i.imgur.com/wAxQ8wC.png');
-      background-repeat: repeat;
-      background-size: 300px 300px;
-      mix-blend-mode: lighten;
+      content: none;
     }
     .container {
       position: relative;
@@ -45,6 +36,7 @@
       text-align: center;
       width: 340px;
       position: relative;
+      min-height: 140px;
     }
     h1 {
       margin-bottom: 18px;
@@ -58,8 +50,9 @@
       display: flex;
       justify-content: center;
       gap: 32px;
-      position: relative;
+      position: relative;    /* Added for absolute positioning of "no" button */
       min-height: 60px;
+      height: 120px;         /* More height for button to move */
     }
     button {
       background: #fff0f5;
@@ -122,8 +115,9 @@
       const btnRect = btn.getBoundingClientRect();
       const otherRect = otherBtn.getBoundingClientRect();
       const padding = 10;
+      // Allow it to move anywhere in the question box area
       const maxLeft = boxRect.width - btnRect.width - padding;
-      const maxTop = 50; // keep in button row
+      const maxTop = boxRect.height - btnRect.height - padding;
 
       let left = Math.random() * maxLeft;
       let top = Math.random() * maxTop;
@@ -131,7 +125,9 @@
       // Avoid overlapping with the Yes button
       if (
         left + btnRect.width > otherRect.left - boxRect.left - 10 &&
-        left < otherRect.right - boxRect.left + 10
+        left < otherRect.right - boxRect.left + 10 &&
+        top + btnRect.height > otherRect.top - boxRect.top - 10 &&
+        top < otherRect.bottom - boxRect.top + 10
       ) {
         return moveNoBtn(btn, otherBtn, box);
       }
@@ -143,14 +139,16 @@
     const noDateBtn = document.getElementById('no-date');
     const yesDateBtn = document.getElementById('yes-date');
     const dateBox = document.getElementById('date-box');
+    const dateButtons = dateBox.querySelector('.buttons');
     noDateBtn.style.position = 'absolute';
     yesDateBtn.style.position = 'relative';
 
     function triggerMoveNoDate() {
-      moveNoBtn(noDateBtn, yesDateBtn, dateBox.querySelector('.buttons'));
+      moveNoBtn(noDateBtn, yesDateBtn, dateButtons);
     }
     triggerMoveNoDate();
     noDateBtn.addEventListener('mouseenter', triggerMoveNoDate);
+    noDateBtn.addEventListener('mousemove', triggerMoveNoDate);
     noDateBtn.addEventListener('click', triggerMoveNoDate);
     noDateBtn.addEventListener('touchstart', triggerMoveNoDate);
 
@@ -162,14 +160,16 @@
     const noLoveBtn = document.getElementById('no-love');
     const yesLoveBtn = document.getElementById('yes-love');
     const loveBox = document.getElementById('love-box');
+    const loveButtons = loveBox.querySelector('.buttons');
     noLoveBtn.style.position = 'absolute';
     yesLoveBtn.style.position = 'relative';
 
     function triggerMoveNoLove() {
-      moveNoBtn(noLoveBtn, yesLoveBtn, loveBox.querySelector('.buttons'));
+      moveNoBtn(noLoveBtn, yesLoveBtn, loveButtons);
     }
     triggerMoveNoLove();
     noLoveBtn.addEventListener('mouseenter', triggerMoveNoLove);
+    noLoveBtn.addEventListener('mousemove', triggerMoveNoLove);
     noLoveBtn.addEventListener('click', triggerMoveNoLove);
     noLoveBtn.addEventListener('touchstart', triggerMoveNoLove);
 
