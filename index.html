@@ -4,7 +4,231 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nati Kasm - Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --bg-dark: #0a1626;
+      --bg-block: #18335c;
+      --accent: #4cb3ff;
+      --font-main: #fff;
+      --font-secondary: #b3c9e1;
+      --block-radius: 18px;
+      --transition: 0.5s cubic-bezier(.4,0,.2,1);
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--font-main);
+      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s, background 0.2s;
+    }
+    a:hover, .btn:hover {
+      color: var(--bg-dark);
+      background: var(--accent);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5em 0;
+    }
+
+    .navbar {
+      background: var(--bg-block);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 16px rgba(0,0,0,0.09);
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-size: 1.5em;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.5em;
+      font-size: 1.07em;
+    }
+    .nav-links a {
+      color: var(--font-main);
+      padding: 0.4em 0.8em;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .nav-links a.active, .nav-links a:focus {
+      background: var(--accent);
+      color: var(--bg-dark);
+    }
+    .nav-toggle {
+      display: none;
+      font-size: 2em;
+      color: var(--accent);
+      cursor: pointer;
+    }
+    @media (max-width: 750px) {
+      .nav-links {
+        flex-direction: column;
+        position: fixed;
+        right: 0;
+        top: 60px;
+        background: var(--bg-block);
+        width: 180px;
+        height: 100vh;
+        transform: translateX(100%);
+        transition: transform 0.3s;
+        box-shadow: -3px 0 12px rgba(0,0,0,0.18);
+        padding-top: 2em;
+        gap: 1.2em;
+        z-index: 1001;
+      }
+      .nav-links.open {
+        transform: translateX(0);
+      }
+      .nav-toggle {
+        display: block;
+      }
+    }
+
+    main {
+      min-height: 80vh;
+    }
+
+    .page-section {
+      display: none;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.5s, transform 0.5s;
+      min-height: 60vh;
+    }
+    .page-section.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+      animation: fadeInUp 0.7s var(--transition);
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .block, .contact-block {
+      background: var(--bg-block);
+      border-radius: var(--block-radius);
+      padding: 2em;
+      margin-bottom: 1.5em;
+      box-shadow: 0 6px 38px rgba(12,22,40,0.10), 0 1.5px 6px rgba(76,179,255,0.04);
+    }
+    h1, h2, h3 {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.5em; margin-bottom: 0.7em; }
+    h3 { font-size: 1.13em; margin-top: 1.3em;}
+    .accent { color: var(--accent); }
+
+    ul {
+      list-style: disc inside;
+      margin: 0.7em 0 1em 1.2em;
+    }
+
+    .btn, .btn-outline {
+      display: inline-block;
+      padding: 0.5em 1.2em;
+      font-size: 1em;
+      font-weight: 600;
+      border-radius: 7px;
+      margin-right: 0.7em;
+      border: none;
+      background: var(--accent);
+      color: var(--bg-dark);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-align: center;
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+    }
+    .btn-outline:hover {
+      background: var(--accent);
+      color: var(--bg-dark);
+    }
+
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.3em;
+    }
+    .project-card {
+      background: var(--bg-dark);
+      border-left: 6px solid var(--accent);
+      padding: 1.3em 1.5em;
+      border-radius: 13px;
+      margin-bottom: 0.5em;
+      box-shadow: 0 2px 16px rgba(76,179,255,0.06);
+    }
+    .project-link {
+      font-size: 0.98em;
+      margin-right: 1em;
+    }
+
+    .languages ul {
+      margin-left: 0.7em;
+    }
+
+    .contact-list {
+      list-style: none;
+      margin-left: 0;
+      margin-bottom: 1.5em;
+    }
+    .contact-list li {
+      margin-bottom: 0.6em;
+    }
+
+    footer {
+      background: var(--bg-block);
+      color: var(--font-secondary);
+      font-size: 0.93em;
+      padding: 0.7em 0;
+      text-align: center;
+      margin-top: 3em;
+      border-radius: 14px 14px 0 0;
+    }
+
+    @media (max-width: 700px) {
+      .block, .contact-block { padding: 1.2em; }
+      .container { padding: 1.3em 0; }
+      .projects-list { gap: 0.6em; }
+      h1 { font-size: 1.35em; }
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar">
@@ -165,6 +389,57 @@
       &copy; 2025 Nati Kasm. All Rights Reserved.
     </div>
   </footer>
-  <script src="script.js"></script>
+  <script>
+    // SPA navigation: Show one section at a time
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.nav-links a, .nav-btn');
+      const sections = document.querySelectorAll('.page-section');
+
+      function showSection(id) {
+        sections.forEach(sec => {
+          if (sec.id === id) {
+            sec.classList.add('active');
+          } else {
+            sec.classList.remove('active');
+          }
+        });
+        // Set nav active
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          if (link.getAttribute('data-page') === id) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+        // Update URL hash without scrolling
+        history.replaceState(null, '', '#' + id);
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          const id = link.getAttribute('data-page');
+          if (id) {
+            e.preventDefault();
+            showSection(id);
+            // If mobile nav open, close it
+            document.querySelector('.nav-links').classList.remove('open');
+          }
+        });
+      });
+
+      // Mobile nav toggle
+      document.getElementById('navToggle').addEventListener('click', function() {
+        document.querySelector('.nav-links').classList.toggle('open');
+      });
+
+      // On page load: check hash
+      const urlHash = window.location.hash.replace('#', '');
+      if (urlHash && document.getElementById(urlHash)) {
+        showSection(urlHash);
+      } else {
+        showSection('hero');
+      }
+    });
+  </script>
 </body>
 </html>
