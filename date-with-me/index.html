@@ -4,131 +4,93 @@
   <meta charset="UTF-8">
   <title>💕 Pink Glittery Questions 💕</title>
   <style>
-  body {
-    min-height: 100vh;
-    margin: 0;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    color: #228B22;           /* Green font color for the page */
-    background: #f9f9f6;      /* Off-white background */
-    position: relative;
-    overflow: hidden;
-  }
-  .container {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: row;      /* Side by side */
-  align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    gap: 40px;                /* Space between boxes */
-  }
-  .question-box {
-    background: #f9f9f6;      /* Off-white background */
-    border-radius: 24px;
-      padding: 20px 24px 16px 24px;
-    margin-bottom: 40px;
-    box-shadow: 0 8px 32px 0 rgba(255, 105, 180, 0.18);
-    text-align: center;
-   width: 260px;
-    position: relative;
-    min-height: 180px;
-    color: #228B22;           /* Green font color */
-    border: 1px solid #e0e0e0;
-  }
-  h1 {
-    margin-bottom: 18px;
-    font-size: 2.1rem;
-    font-weight: bold;
-    color: #228B22;           /* Green font color */
-    text-shadow: none;
-  }
-  .user-reply {
-    margin-top: 8px;
-    color: #228B22;           /* Green font color */
-    font-size: 1.08rem;
-    word-break: break-word;
-    min-height: 24px;
-  }
-  /* Keep other styles unchanged (buttons, input, etc.) */
-  .buttons {
-    margin-top: 16px;
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    position: relative;
-    min-height: 60px;
-    height: 120px;
-  }
-  button {
-    background: #fff0f5;
-    color: #ff1493;
-    border: none;
-    border-radius: 30px;
-    padding: 14px 36px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.18s, color 0.18s, transform 0.2s;
-    box-shadow: 0 2px 14px #ffb6c1;
-    position: relative;
-    z-index: 2;
-  }
-  button:active {
-    transform: scale(0.97);
-  }
-  .yes {
-    background: #ff69b4;
-    color: #fff;
-    border: 2px solid #fff;
-    box-shadow: 0 2px 18px #ff69b4;
-  }
-  .no {
-    position: absolute;
-  }
-  .reply-section {
-    margin-top: 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .reply-section input[type="text"] {
-    border-radius: 16px;
-    border: none;
-    padding: 8px 12px;
-    font-size: 1rem;
-    margin-bottom: 6px;
-    width: 70%;
-    box-sizing: border-box;
-  }
-  .reply-section button {
-    padding: 8px 18px;
-    font-size: 1rem;
-    margin-bottom: 6px;
-    background: #87cefa;
-    color: #fff;
-    border-radius: 18px;
-    border: none;
-    box-shadow: 0 1px 6px #b3e0ff;
-    transition: background 0.18s, color 0.18s;
-  }
-  .reply-section button:hover {
-    background: #ff69b4;
-    color: #fff;
-  }
-  /* Responsive for mobile */
-  @media (max-width: 800px) {
+    body {
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: #fff0f5;
+      /* Baby blue gradient */
+      background: linear-gradient(135deg, #b3e0ff 0%, #87cefa 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Remove glitter overlay */
+    body::before {
+      content: none;
+    }
     .container {
+      position: relative;
+      z-index: 1;
+      display: flex;
       flex-direction: column;
-      gap: 0;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
     .question-box {
-      width: 96vw;
-      padding: 18px 2vw 14px 2vw;
-      margin: 0 auto 40px auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 24px;
+      padding: 32px 40px 24px 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 32px 0 rgba(255, 105, 180, 0.18);
+      text-align: center;
+      width: 340px;
+      position: relative;
+      min-height: 140px;
     }
-  }
-</style>
+    h1 {
+      margin-bottom: 18px;
+      font-size: 2.1rem;
+      font-weight: bold;
+      color: #fff0f5;
+      text-shadow: 0 2px 8px #ff69b4, 0 0px 12px #fff;
+    }
+    .buttons {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      position: relative;    /* Added for absolute positioning of "no" button */
+      min-height: 60px;
+      height: 120px;         /* More height for button to move */
+    }
+    button {
+      background: #fff0f5;
+      color: #ff1493;
+      border: none;
+      border-radius: 30px;
+      padding: 14px 36px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.18s, color 0.18s, transform 0.2s;
+      box-shadow: 0 2px 14px #ffb6c1;
+      position: relative;
+      z-index: 2;
+    }
+    button:active {
+      transform: scale(0.97);
+    }
+    .yes {
+      background: #ff69b4;
+      color: #fff;
+      border: 2px solid #fff;
+      box-shadow: 0 2px 18px #ff69b4;
+    }
+    .no {
+      position: absolute;
+    }
+    /* Responsive for mobile */
+    @media (max-width: 480px) {
+      .question-box {
+        width: 96vw;
+        padding: 18px 2vw 14px 2vw;
+      }
+      .buttons {
+        gap: 12vw;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -138,22 +100,12 @@
         <button class="yes" id="yes-date">Yes!</button>
         <button class="no" id="no-date">No</button>
       </div>
-      <div class="reply-section" id="date-reply-section">
-        <input type="text" id="date-reply-input" placeholder="Type your reply here..." />
-        <button id="date-reply-send">Send Reply</button>
-        <div class="user-reply" id="date-user-reply"></div>
-      </div>
     </div>
     <div class="question-box" id="love-box">
       <h1>Do you love me? 🥺</h1>
       <div class="buttons">
         <button class="yes" id="yes-love">Yes!</button>
         <button class="no" id="no-love">No</button>
-      </div>
-      <div class="reply-section" id="love-reply-section">
-        <input type="text" id="love-reply-input" placeholder="Type your reply here..." />
-        <button id="love-reply-send">Send Reply</button>
-        <div class="user-reply" id="love-user-reply"></div>
       </div>
     </div>
   </div>
@@ -222,27 +174,8 @@
     noLoveBtn.addEventListener('touchstart', triggerMoveNoLove);
 
     yesLoveBtn.addEventListener('click', () => {
-      loveBox.innerHTML = `<h1>Olala, really? I feel the same way hehe 💞</h1>`;
+      loveBox.innerHTML = `<h1>I love you too! 💞</h1>`;
     });
-
-    // --- NEW: User reply handling for both questions ---
-    // Date question reply
-    document.getElementById('date-reply-send').onclick = function() {
-      const val = document.getElementById('date-reply-input').value;
-      if(val.trim()) {
-        document.getElementById('date-user-reply').innerText = 'You said: ' + val;
-        document.getElementById('date-reply-input').value = '';
-      }
-    };
-
-    // Love question reply
-    document.getElementById('love-reply-send').onclick = function() {
-      const val = document.getElementById('love-reply-input').value;
-      if(val.trim()) {
-        document.getElementById('love-user-reply').innerText = 'You said: ' + val;
-        document.getElementById('love-reply-input').value = '';
-      }
-    };
   </script>
 </body>
 </html>
