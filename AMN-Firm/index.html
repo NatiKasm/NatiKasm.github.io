@@ -409,6 +409,142 @@ section.active { opacity: 1; transform: none; }
 #stack.active { transition: opacity 0.8s, transform 0.8s rotate(-1deg); }
 #prices.active { transition: opacity 1s, transform 1s scale(1.02); }
 #contact.active { transition: opacity 0.6s, transform 0.8s scale(1.03); }
+    .hero-content-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-logo-centered {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.hero-logo-text {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  color: #fff;
+  background: var(--accent);
+  padding: 0.5rem 2rem;
+  border-radius: 1.2rem;
+  display: inline-block;
+  box-shadow: 0 4px 24px rgba(38,112,232,0.11);
+}
+
+.hero-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.hero-text {
+  flex: 1 1 320px;
+  min-width: 260px;
+  max-width: 500px;
+  color: #fff;
+  text-align: left;
+}
+
+.hero-text h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1.5px;
+  color: #fff;
+}
+
+.hero-text p {
+  font-size: 1.25rem;
+  color: #d9e8ff;
+  font-weight: 500;
+  margin-bottom: 2.2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 1rem 2.2rem;
+  border-radius: 0.5rem;
+  font-size: 1.13rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(38,112,232,0.13);
+  transition: background 0.2s, color 0.2s, transform 0.18s;
+  display: inline-block;
+}
+
+.button:hover {
+  background: #fff;
+  color: var(--accent);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.button-secondary {
+  background: #fff;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+.button-secondary:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.hero-img {
+  flex: 1 1 320px;
+  min-width: 230px;
+  max-width: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-img img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 18px;
+  box-shadow: 0 6px 40px rgba(24,27,35,0.12);
+  opacity: 0.98;
+  filter: brightness(0.90);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .hero-main {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .hero-logo-text {
+    font-size: 2rem;
+    padding: 0.4rem 1.2rem;
+  }
+}
+@media (max-width: 600px) {
+  .hero-text h1 {
+    font-size: 1.4rem;
+  }
+  .hero-logo-text {
+    font-size: 1.2rem;
+    padding: 0.2rem 0.7rem;
+  }
+  .hero-text p {
+    font-size: 1rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -428,21 +564,31 @@ section.active { opacity: 1; transform: none; }
       <a href="index.html#stack">Stack</a> 
           <a href="prices.html">Prices</a>
      <a href="index.html#contact">Contact</a>
-          <a href="#contact">Contact</a>
         </nav>
       </div>
     </header>
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <!-- Hero Section -->
+<section class="hero" id="home">
+  <div class="hero-content-wrapper">
+    <div class="hero-logo-centered">
+      <span class="hero-logo-text">AMN <span style="font-size:1rem;font-weight:400;">(Audit Me Not)</span></span>
+    </div>
+    <div class="hero-main">
       <div class="hero-text">
-        <h1>Audit Me Not</h1>
-        <p>Audit smarter. Stress less.<br>Modern auditing & consulting for forward-thinking businesses.</p>
-        <a href="#contact" class="button">Request a Consultation</a>
+        <h1>Stress-Free Auditing for Modern Businesses</h1>
+        <p>Expert audits and financial consulting. Transparent, tech-driven, and client-focused solutions for your organization.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="button">Request a Free Consultation</a>
+          <a href="#services" class="button button-secondary">Explore Services</a>
+        </div>
       </div>
       <div class="hero-img">
         <img src="https://images.unsplash.com/photo-1556742047-1b84c6e6eab1?auto=format&fit=crop&w=600&q=80" alt="Business meeting with professionals"/>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
     <!-- About -->
     <section id="about">
       <div class="section-title">About Us</div>
