@@ -98,17 +98,18 @@
       <h1>Do you wanna go on a date with me? 💖</h1>
       <div class="buttons">
         <button class="yes" id="yes-date">Yes!</button>
-        <button class="no" id="no-date">No</button>
+      
       </div>
     </div>
     <div class="question-box" id="love-box">
       <h1>Do you love me? 🥺</h1>
       <div class="buttons">
         <button class="yes" id="yes-love">Yes!</button>
-        <button class="no" id="no-love">No</button>
+        
       </div>
     </div>
   </div>
+  <button id="no-page-btn" style="position:fixed; left:40vw; top:40vh; z-index:9999; background:#fff0f5; color:#ff1493; border:none; border-radius:30px; padding:14px 36px; font-size:1.1rem; font-weight:bold; box-shadow:0 2px 14px #ffb6c1; cursor:pointer;">No</button>
   <script>
     function moveNoBtn(btn, otherBtn, box) {
       const boxRect = box.getBoundingClientRect();
@@ -177,5 +178,37 @@
       loveBox.innerHTML = `<h1>I love you too! 💞</h1>`;
     });
   </script>
+  <script>
+const noBtn = document.getElementById('no-page-btn');
+const safeDistance = 120;
+
+function moveNoBtn(mouseX, mouseY) {
+  const btnRect = noBtn.getBoundingClientRect();
+  let newLeft, newTop, distance;
+  const padding = 20;
+  const maxLeft = window.innerWidth - btnRect.width - padding;
+  const maxTop = window.innerHeight - btnRect.height - padding;
+
+  do {
+    newLeft = Math.random() * maxLeft;
+    newTop = Math.random() * maxTop;
+    distance = Math.hypot(mouseX - (newLeft + btnRect.width/2), mouseY - (newTop + btnRect.height/2));
+  } while (distance < safeDistance);
+
+  noBtn.style.left = `${newLeft}px`;
+  noBtn.style.top = `${newTop}px`;
+}
+
+document.addEventListener('mousemove', (e) => {
+  moveNoBtn(e.clientX, e.clientY);
+});
+
+noBtn.addEventListener('mousedown', (e) => { moveNoBtn(e.clientX, e.clientY); });
+noBtn.addEventListener('touchstart', (e) => {
+  if (e.touches.length > 0) {
+    moveNoBtn(e.touches[0].clientX, e.touches[0].clientY);
+  }
+});
+</script>
 </body>
 </html>
