@@ -36,7 +36,7 @@
       text-align: center;
       width: 340px;
       position: relative;
-      min-height: 140px;
+      min-height: 180px;
     }
     h1 {
       margin-bottom: 18px;
@@ -80,6 +80,44 @@
     .no {
       position: absolute;
     }
+    /* Input and reply styling */
+    .reply-section {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .reply-section input[type="text"] {
+      border-radius: 16px;
+      border: none;
+      padding: 8px 12px;
+      font-size: 1rem;
+      margin-bottom: 6px;
+      width: 70%;
+      box-sizing: border-box;
+    }
+    .reply-section button {
+      padding: 8px 18px;
+      font-size: 1rem;
+      margin-bottom: 6px;
+      background: #87cefa;
+      color: #fff;
+      border-radius: 18px;
+      border: none;
+      box-shadow: 0 1px 6px #b3e0ff;
+      transition: background 0.18s, color 0.18s;
+    }
+    .reply-section button:hover {
+      background: #ff69b4;
+      color: #fff;
+    }
+    .user-reply {
+      margin-top: 8px;
+      color: #fff;
+      font-size: 1.08rem;
+      word-break: break-word;
+      min-height: 24px;
+    }
     /* Responsive for mobile */
     @media (max-width: 480px) {
       .question-box {
@@ -88,6 +126,9 @@
       }
       .buttons {
         gap: 12vw;
+      }
+      .reply-section input[type="text"] {
+        width: 90%;
       }
     }
   </style>
@@ -100,12 +141,22 @@
         <button class="yes" id="yes-date">Yes!</button>
         <button class="no" id="no-date">No</button>
       </div>
+      <div class="reply-section" id="date-reply-section">
+        <input type="text" id="date-reply-input" placeholder="Type your reply here..." />
+        <button id="date-reply-send">Send Reply</button>
+        <div class="user-reply" id="date-user-reply"></div>
+      </div>
     </div>
     <div class="question-box" id="love-box">
       <h1>Do you love me? 🥺</h1>
       <div class="buttons">
         <button class="yes" id="yes-love">Yes!</button>
         <button class="no" id="no-love">No</button>
+      </div>
+      <div class="reply-section" id="love-reply-section">
+        <input type="text" id="love-reply-input" placeholder="Type your reply here..." />
+        <button id="love-reply-send">Send Reply</button>
+        <div class="user-reply" id="love-user-reply"></div>
       </div>
     </div>
   </div>
@@ -176,6 +227,25 @@
     yesLoveBtn.addEventListener('click', () => {
       loveBox.innerHTML = `<h1>Olala, really? I feel the same way hehe 💞</h1>`;
     });
+
+    // --- NEW: User reply handling for both questions ---
+    // Date question reply
+    document.getElementById('date-reply-send').onclick = function() {
+      const val = document.getElementById('date-reply-input').value;
+      if(val.trim()) {
+        document.getElementById('date-user-reply').innerText = 'You said: ' + val;
+        document.getElementById('date-reply-input').value = '';
+      }
+    };
+
+    // Love question reply
+    document.getElementById('love-reply-send').onclick = function() {
+      const val = document.getElementById('love-reply-input').value;
+      if(val.trim()) {
+        document.getElementById('love-user-reply').innerText = 'You said: ' + val;
+        document.getElementById('love-reply-input').value = '';
+      }
+    };
   </script>
 </body>
 </html>
