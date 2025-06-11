@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nati Kasm - Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="logo">Nati Kasm</div>
+      <ul class="nav-links">
+        <li><a href="#hero" data-page="hero">Home</a></li>
+        <li><a href="#about" data-page="about">About</a></li>
+        <li><a href="#skills" data-page="skills">Skills</a></li>
+        <li><a href="#projects" data-page="projects">Portfolio</a></li>
+        <li><a href="#experience" data-page="experience">Experience</a></li>
+        <li><a href="#contact" data-page="contact">Contact</a></li>
+      </ul>
+      <div class="nav-toggle" id="navToggle">&#9776;</div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Each section has class "page-section" and only one has "active" at a time -->
+    <section id="hero" class="page-section active">
+      <div class="container hero-content">
+        <h1>Hi, I'm <span class="accent">Nati Kasm</span></h1>
+        <h2>Junior Full-Stack Web Developer</h2>
+        <p>
+          I specialize in building responsive, user-focused websites and applications using <b>HTML</b>, <b>CSS</b>, <b>JavaScript</b>, and <b>React</b>.
+          With a strong interest in business and experience supporting executives and teams, I combine tech skills with a practical, service-driven mindset.
+        </p>
+        <div class="hero-links">
+          <a href="#projects" data-page="projects" class="btn nav-btn">View My Work</a>
+          <a href="#contact" data-page="contact" class="btn btn-outline nav-btn">Contact Me</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="page-section">
+      <div class="container block">
+        <h2>About Me</h2>
+        <p>
+          I'm currently working as a junior full-stack web developer and finishing my Bachelor's degree. My journey into tech began after years of working as an assistant for both corporations and individuals, where I developed a sharp eye for organization, communication, and delivering value. These soft skills now shape the way I approach web development.
+        </p>
+        <p>
+          My projects are clean, scalable, and always built with the end user in mind. I'm especially interested in the intersection of development and business — how websites and tools can solve real-world problems and improve workflows.
+        </p>
+        <div class="languages">
+          <strong>Languages I Speak:</strong>
+          <ul>
+            <li>🇬🇧 English — Native</li>
+            <li>🇳🇱 Dutch — B1 (Intermediate)</li>
+            <li>🇵🇱 Polish — A2 (Beginner)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="page-section">
+      <div class="container block">
+        <h2>Skills & Tools</h2>
+        <div class="skills-list">
+          <div>
+            <h3>Front-End</h3>
+            <ul>
+              <li>HTML5, CSS3, JavaScript (ES6+), React</li>
+              <li>Responsive Design (Mobile-First)</li>
+              <li>Sass (Basic understanding)</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Back-End</h3>
+            <ul>
+              <li>Currently learning Node.js and Express.js</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Tools & Platforms</h3>
+            <ul>
+              <li>Git, GitHub, GitHub Pages</li>
+              <li>Visual Studio Code</li>
+              <li>Figma (for UI collaboration)</li>
+              <li>Trello, Notion (Project Management)</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Soft Skills</h3>
+            <ul>
+              <li>Strong communication</li>
+              <li>Detail-oriented and organized</li>
+              <li>Business-aware problem-solving</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="page-section">
+      <div class="container block">
+        <h2>Projects</h2>
+        <div class="projects-list">
+          <div class="project-card">
+            <h3>Startup Landing Page</h3>
+            <p>
+              A clean, modern one-page site built for a fictional tech startup. Fully responsive and animated with scroll-based transitions.
+            </p>
+            <p><b>Tech Used:</b> HTML, CSS, JavaScript</p>
+            <a href="#" class="project-link">GitHub Repo</a> | <a href="#" class="project-link">Live Demo</a>
+          </div>
+          <div class="project-card">
+            <h3>Product Catalog (React SPA)</h3>
+            <p>
+              A dynamic product listing page that simulates a small online store, complete with a product filter and modal pop-ups.
+            </p>
+            <p><b>Tech Used:</b> React, CSS Modules</p>
+            <a href="#" class="project-link">GitHub Repo</a> | <a href="#" class="project-link">Live Demo</a>
+          </div>
+          <div class="project-card">
+            <h3>Business Dashboard Prototype</h3>
+            <p>
+              A static dashboard prototype created to visualize company performance metrics. Built to explore front-end design and business data presentation.
+            </p>
+            <p><b>Tech Used:</b> HTML, CSS, JavaScript</p>
+            <a href="#" class="project-link">GitHub Repo</a> | <a href="#" class="project-link">Live Demo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="page-section">
+      <div class="container block">
+        <h2>Business Experience</h2>
+        <p>
+          Before web development, I worked as a professional assistant across both private and corporate sectors. That experience sharpened my ability to:
+        </p>
+        <ul>
+          <li>Communicate clearly with stakeholders</li>
+          <li>Manage time and prioritize tasks effectively</li>
+          <li>Understand and anticipate client needs</li>
+        </ul>
+        <p>
+          This background helps me think like a client — not just a coder — and produce websites that align with business goals.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact" class="page-section">
+      <div class="container block contact-block">
+        <h2>Contact Me</h2>
+        <ul class="contact-list">
+          <li>📧 Email: <a href="mailto:your.email@example.com">your.email@example.com</a></li>
+          <li>🔗 GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></li>
+          <li>🔗 LinkedIn: <a href="https://linkedin.com/in/yourname" target="_blank">linkedin.com/in/yourname</a></li>
+        </ul>
+        <p>Let’s build something together. Whether you're a startup, a solo founder, or a small business, I can help you turn your idea into a sleek, modern web experience.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      &copy; 2025 Nati Kasm. All Rights Reserved.
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
