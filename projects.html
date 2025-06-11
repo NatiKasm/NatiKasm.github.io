@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Natasha Kasumi – Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Natasha Kasumi's portfolio projects.">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sage: #a7bcb9;
+      --emerald: #4f9d69;
+      --dark-emerald: #257153;
+      --background: #f6faf7;
+      --card-bg: #ffffff;
+      --text: #203026;
+      --heading: #257153;
+      --accent: #b6e2d3;
+      --nav-bg: #e5f5ee;
+    }
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      background: var(--nav-bg);
+      box-shadow: 0 2px 12px rgba(79, 157, 105, 0.07);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 99;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      gap: 2rem;
+    }
+    nav a {
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: var(--heading);
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      padding: 0.4em 0.8em;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+    nav a:hover, nav a.active {
+      background: var(--sage);
+      color: var(--dark-emerald);
+    }
+    .container {
+      max-width: 720px;
+      margin: 42px auto;
+      background: var(--card-bg);
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 28px rgba(79, 157, 105, 0.10);
+    }
+    h1 {
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: var(--heading);
+      margin-top: 0;
+      font-size: 2.4rem;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+    .projects { margin-bottom: 2rem; }
+    .project {
+      margin-bottom: 1.4rem;
+      background: var(--accent);
+      padding: 1.1rem 1.2rem;
+      border-radius: 9px;
+      box-shadow: 0 2px 10px rgba(79, 157, 105, 0.04);
+    }
+    .project-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: bold;
+      font-size: 1.08rem;
+      color: var(--emerald);
+      margin-bottom: 0.35rem;
+    }
+    .project-desc {
+      font-size: 1rem;
+      color: #355145;
+    }
+    .project-desc a {
+      color: var(--emerald);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .project-desc a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      .container { padding: 1rem; }
+      h1 { font-size: 1.5rem; }
+      nav ul { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <h1>Projects</h1>
+    <div class="projects">
+      <div class="project">
+        <div class="project-title">SME Website Health Checker</div>
+        <div class="project-desc">
+          A simple tool that checks any website for SSL (HTTPS), basic SEO tags, and other essentials for online credibility.
+          I designed and built this project to help small businesses quickly identify technical gaps in their web presence.
+          It’s user-friendly and aims to empower non-technical founders to manage their sites with confidence.
+          <br>
+          <a href="sme-website-checker/" target="_blank">View Project</a>
+        </div>
+      </div>
+      <div class="project">
+        <div class="project-title">The Warsaw Table</div>
+        <div class="project-desc">
+          A curated guide to the best restaurants in Warsaw, featuring honest reviews and local highlights.
+          I built this as a passion project to combine my love for food, writing, and web development.
+          The site helps newcomers and locals alike discover unique dining spots in the city.
+          <br>
+          <a href="https://natikasm.github.io/The-Warsaw-Table/index.html" target="_blank">View Project</a>
+        </div>
+      </div>
+      <div class="project">
+        <div class="project-title">AMN Firm: Modern Auditing</div>
+        <div class="project-desc">
+          A sleek landing page for a fictional auditing and financial consulting firm, inspired by real startup needs.
+          I focused on clean design, accessibility, and clear value messaging to make the site inviting for prospective clients.
+          This project strengthened my skills in layout, CSS animation, and writing persuasive copy.
+          <br>
+          <a href="AMN-Firm/index.html" target="_blank">View Project</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
