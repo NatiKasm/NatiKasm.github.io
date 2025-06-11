@@ -392,6 +392,23 @@ background:transparent;
       .section-title { font-size: 1.2rem;}
       .container { padding: 0 0.3rem; }
     }
+    section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 
+    opacity 0.7s cubic-bezier(0.22,1,0.36,1), 
+    transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+section.active { opacity: 1; transform: none; }
+
+/* Unique transitions for each section */
+#about.active { transition: opacity 0.8s, transform 0.8s; }
+#services.active { transition: opacity 0.7s, transform 0.7s scale(1.04); }
+#why.active { transition: opacity 1s, transform 0.6s; }
+#team.active { transition: opacity 0.5s, transform 0.9s; }
+#stack.active { transition: opacity 0.8s, transform 0.8s rotate(-1deg); }
+#prices.active { transition: opacity 1s, transform 1s scale(1.02); }
+#contact.active { transition: opacity 0.6s, transform 0.8s scale(1.03); }
   </style>
 </head>
 <body>
@@ -563,6 +580,31 @@ background:transparent;
       &copy; 2025 AMN. All rights reserved. | Designed by NatiKasm
     </footer>
   </div>
+  565|   </div>
+<!-- ADD SCRIPT HERE -->
+<script>
+  // Animate sections on scroll or navigation
+  document.querySelectorAll('section').forEach(section => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.2 });
+    observer.observe(section);
+  });
+  // For direct navigation (if user lands on anchor)
+  window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash;
+    if(hash) {
+      const section = document.querySelector(hash);
+      if(section) section.classList.add('active');
+    }
+  });
+</script>
+566| </body>
+567| </html>
 </body>
 </html>
 
