@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Natasha Kasumi – Contact</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact Natasha Kasumi.">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sage: #a7bcb9;
+      --emerald: #4f9d69;
+      --dark-emerald: #257153;
+      --background: #f6faf7;
+      --card-bg: #ffffff;
+      --text: #203026;
+      --heading: #257153;
+      --accent: #b6e2d3;
+      --nav-bg: #e5f5ee;
+    }
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      background: var(--nav-bg);
+      box-shadow: 0 2px 12px rgba(79, 157, 105, 0.07);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 99;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      gap: 2rem;
+    }
+    nav a {
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: var(--heading);
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      padding: 0.4em 0.8em;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+    nav a:hover, nav a.active {
+      background: var(--sage);
+      color: var(--dark-emerald);
+    }
+    .container {
+      max-width: 720px;
+      margin: 42px auto;
+      background: var(--card-bg);
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 28px rgba(79, 157, 105, 0.10);
+    }
+    h1 {
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: var(--heading);
+      margin-top: 0;
+      font-size: 2.4rem;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+    .contact a {
+      color: var(--emerald);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      .container { padding: 1rem; }
+      h1 { font-size: 1.5rem; }
+      nav ul { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <h1>Contact</h1>
+    <div class="contact">
+      <p>
+        Email: <a href="mailto:info@natashakas.com">info@natashakas.com</a><br>
+        GitHub: <a href="https://github.com/NatiKasm" target="_blank">NatiKasm</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
