@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>💕 Pink Glittery Questions 💕</title>
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: #fff0f5;
+      /* Glittery pink gradient as background */
+      background: linear-gradient(135deg, #ffb6e0 0%, #ff69b4 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Glitter overlay using a repeating PNG pattern */
+    body::before {
+      content: "";
+      pointer-events: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 0;
+      opacity: 0.4;
+      background-image: url('https://i.imgur.com/wAxQ8wC.png');
+      background-repeat: repeat;
+      background-size: 300px 300px;
+      mix-blend-mode: lighten;
+    }
+    .container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .question-box {
+      background: rgba(255,255,255,0.18);
+      border-radius: 24px;
+      padding: 32px 40px 24px 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 32px 0 rgba(255, 105, 180, 0.18);
+      text-align: center;
+      width: 340px;
+      position: relative;
+    }
+    h1 {
+      margin-bottom: 18px;
+      font-size: 2.1rem;
+      font-weight: bold;
+      color: #fff0f5;
+      text-shadow: 0 2px 8px #ff69b4, 0 0px 12px #fff;
+    }
+    .buttons {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      position: relative;
+      min-height: 60px;
+    }
+    button {
+      background: #fff0f5;
+      color: #ff1493;
+      border: none;
+      border-radius: 30px;
+      padding: 14px 36px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.18s, color 0.18s, transform 0.2s;
+      box-shadow: 0 2px 14px #ffb6c1;
+      position: relative;
+      z-index: 2;
+    }
+    button:active {
+      transform: scale(0.97);
+    }
+    .yes {
+      background: #ff69b4;
+      color: #fff;
+      border: 2px solid #fff;
+      box-shadow: 0 2px 18px #ff69b4;
+    }
+    .no {
+      position: absolute;
+    }
+    /* Responsive for mobile */
+    @media (max-width: 480px) {
+      .question-box {
+        width: 96vw;
+        padding: 18px 2vw 14px 2vw;
+      }
+      .buttons {
+        gap: 12vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="question-box" id="date-box">
+      <h1>Do you wanna go on a date with me? 💖</h1>
+      <div class="buttons">
+        <button class="yes" id="yes-date">Yes!</button>
+        <button class="no" id="no-date">No</button>
+      </div>
+    </div>
+    <div class="question-box" id="love-box">
+      <h1>Do you love me? 🥺</h1>
+      <div class="buttons">
+        <button class="yes" id="yes-love">Yes!</button>
+        <button class="no" id="no-love">No</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    function moveNoBtn(btn, otherBtn, box) {
+      const boxRect = box.getBoundingClientRect();
+      const btnRect = btn.getBoundingClientRect();
+      const otherRect = otherBtn.getBoundingClientRect();
+      const padding = 10;
+      const maxLeft = boxRect.width - btnRect.width - padding;
+      const maxTop = 50; // keep in button row
+
+      let left = Math.random() * maxLeft;
+      let top = Math.random() * maxTop;
+
+      // Avoid overlapping with the Yes button
+      if (
+        left + btnRect.width > otherRect.left - boxRect.left - 10 &&
+        left < otherRect.right - boxRect.left + 10
+      ) {
+        return moveNoBtn(btn, otherBtn, box);
+      }
+      btn.style.left = left + "px";
+      btn.style.top = top + "px";
+    }
+
+    // For the date question
+    const noDateBtn = document.getElementById('no-date');
+    const yesDateBtn = document.getElementById('yes-date');
+    const dateBox = document.getElementById('date-box');
+    noDateBtn.style.position = 'absolute';
+    yesDateBtn.style.position = 'relative';
+
+    function triggerMoveNoDate() {
+      moveNoBtn(noDateBtn, yesDateBtn, dateBox.querySelector('.buttons'));
+    }
+    triggerMoveNoDate();
+    noDateBtn.addEventListener('mouseenter', triggerMoveNoDate);
+    noDateBtn.addEventListener('click', triggerMoveNoDate);
+    noDateBtn.addEventListener('touchstart', triggerMoveNoDate);
+
+    yesDateBtn.addEventListener('click', () => {
+      dateBox.innerHTML = `<h1>Yay! 💖 Can't wait for our date!</h1>`;
+    });
+
+    // For the love question
+    const noLoveBtn = document.getElementById('no-love');
+    const yesLoveBtn = document.getElementById('yes-love');
+    const loveBox = document.getElementById('love-box');
+    noLoveBtn.style.position = 'absolute';
+    yesLoveBtn.style.position = 'relative';
+
+    function triggerMoveNoLove() {
+      moveNoBtn(noLoveBtn, yesLoveBtn, loveBox.querySelector('.buttons'));
+    }
+    triggerMoveNoLove();
+    noLoveBtn.addEventListener('mouseenter', triggerMoveNoLove);
+    noLoveBtn.addEventListener('click', triggerMoveNoLove);
+    noLoveBtn.addEventListener('touchstart', triggerMoveNoLove);
+
+    yesLoveBtn.addEventListener('click', () => {
+      loveBox.innerHTML = `<h1>I love you too! 💞</h1>`;
+    });
+  </script>
+</body>
+</html>
