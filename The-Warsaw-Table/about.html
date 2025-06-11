@@ -1,45 +1,250 @@
-<main class="about-section">
-  <h1>About</h1>
-  <section class="about-me">
-    <h2>About Me</h2>
-    <div class="about-flex">
-      <!-- Replace 'images/your-photo.jpg' with your actual image path -->
-      <img src="images/your-photo.jpg" alt="Natasha K." class="about-photo">
-      <div>
-        <p>
-          Hi! I'm Natasha K., the creator of The Warsaw Table. I’m passionate about exploring new food spots, cooking up delicious recipes, and sharing honest reviews and recommendations with fellow food lovers.
-        </p>
-        <ul>
-          <li>Personal reviews of restaurants and cafes in Warsaw and beyond</li>
-          <li>Original and favorite recipes to try at home</li>
-          <li>Tips and recommendations for foodies, travelers, and home cooks</li>
-        </ul>
-        <p>
-          Whether you’re searching for your next meal out, new recipes to experiment with, or trusted food recommendations, I hope you’ll find something inspiring here!
-        </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About — The Warsaw Table</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900;700;400&display=swap" rel="stylesheet">
+  <style>
+    .about-section {
+      max-width: 900px;
+      margin: 2em auto;
+      padding: 2em;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    .about-me h2, .about-extra h2, .about-gallery h2 {
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      font-size: 1.6em;
+      color: #4a4a4a;
+    }
+    .about-flex {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    .about-photo {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      margin-bottom: 1em;
+    }
+    .about-flex > div {
+      flex: 1 1 250px;
+    }
+    .about-me ul {
+      margin: 1em 0;
+      padding-left: 1.2em;
+    }
+    .about-links {
+      list-style: none;
+      padding-left: 0;
+      display: flex;
+      gap: 20px;
+    }
+    .about-links li a {
+      text-decoration: none;
+      color: #2d72d9;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .about-links li a:hover {
+      color: #213a5a;
+    }
+    .about-gallery {
+      margin-top: 2em;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 1em;
+    }
+    .gallery-item {
+      background: #fafafa;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 10px;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      display: block;
+      border-radius: 10px 10px 0 0;
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+    .gallery-item img:hover {
+      transform: scale(1.05);
+    }
+    .gallery-caption {
+      margin-top: 8px;
+      font-size: 0.98em;
+      color: #555;
+      padding: 0 8px;
+      text-align: center;
+    }
+    /* Lightbox styles */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.2s;
+    }
+    .lightbox-modal.open {
+      display: flex;
+    }
+    .lightbox-content {
+      max-width: 80vw;
+      max-height: 80vh;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+    }
+    .lightbox-caption {
+      color: #fff;
+      text-align: center;
+      margin-top: 1em;
+      font-size: 1.1em;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 32px;
+      right: 50px;
+      color: #fff;
+      font-size: 2.5em;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10001;
+    }
+    @media (max-width: 600px) {
+      .about-flex {
+        flex-direction: column;
+        align-items: center;
+      }
+      .about-photo {
+        margin-right: 0;
+        margin-bottom: 1em;
+      }
+      .lightbox-content {
+        max-width: 95vw;
+        max-height: 60vh;
+      }
+      .lightbox-close {
+        top: 12px;
+        right: 20px;
+        font-size: 2em;
+      }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="main-nav">
+    <div class="nav-content">
+      <span class="nav-title"><a href="index.html">The Warsaw Table</a></span>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main class="about-section">
+    <h1>About</h1>
+    <section class="about-me">
+      <h2>About Me</h2>
+      <div class="about-flex">
+        <!-- Replace with your actual photo -->
+        <img src="images/your-photo.jpg" alt="Natasha K." class="about-photo">
+        <div>
+          <p>
+            Hi! I'm Natasha K., the creator of The Warsaw Table. I’m passionate about exploring new food spots, cooking up delicious recipes, and sharing honest reviews and recommendations with fellow food lovers.
+          </p>
+          <ul>
+            <li>Personal reviews of restaurants and cafes in Warsaw and beyond</li>
+            <li>Original and favorite recipes to try at home</li>
+            <li>Tips and recommendations for foodies, travelers, and home cooks</li>
+          </ul>
+          <p>
+            Whether you’re searching for your next meal out, new recipes to experiment with, or trusted food recommendations, I hope you’ll find something inspiring here!
+          </p>
+        </div>
       </div>
+    </section>
+    <section class="about-extra">
+      <h2>Connect & Explore</h2>
+      <ul class="about-links">
+        <!-- Update these links -->
+        <li><a href="mailto:your-email@example.com">Contact Me</a></li>
+        <li><a href="https://www.instagram.com/yourprofile" target="_blank">Instagram</a></li>
+        <li><a href="https://www.facebook.com/yourpage" target="_blank">Facebook</a></li>
+      </ul>
+    </section>
+    <section class="about-gallery">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="images/image1.jpg" alt="Delicious pasta at XYZ restaurant" onclick="openLightbox(this)">
+          <div class="gallery-caption">Delicious pasta at XYZ restaurant</div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/image2.jpg" alt="Homemade pierogi" onclick="openLightbox(this)">
+          <div class="gallery-caption">Homemade pierogi</div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/image3.jpg" alt="Cozy cafe in Warsaw" onclick="openLightbox(this)">
+          <div class="gallery-caption">Cozy cafe in Warsaw</div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/image4.jpg" alt="Tasty dessert creation" onclick="openLightbox(this)">
+          <div class="gallery-caption">Tasty dessert creation</div>
+        </div>
+      </div>
+    </section>
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox-modal" onclick="closeLightbox()">
+      <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+      <img class="lightbox-content" id="lightbox-img">
+      <div id="lightbox-caption" class="lightbox-caption"></div>
     </div>
-  </section>
-
-  <section class="about-extra">
-    <h2>Connect & Explore</h2>
-    <ul class="about-links">
-      <!-- Replace with your actual links -->
-      <li><a href="mailto:your-email@example.com">Contact Me</a></li>
-      <li><a href="https://www.instagram.com/yourprofile" target="_blank">Instagram</a></li>
-      <li><a href="https://www.facebook.com/yourpage" target="_blank">Facebook</a></li>
-    </ul>
-  </section>
-
-  <section class="about-gallery">
-    <h2>Gallery</h2>
-    <div class="gallery-grid">
-      <!-- Replace image paths and alts with your actual images and descriptions -->
-      <img src="images/image1.jpg" alt="Delicious pasta at XYZ restaurant">
-      <img src="images/image2.jpg" alt="Homemade pierogi">
-      <img src="images/image3.jpg" alt="Cozy cafe in Warsaw">
-      <img src="images/image4.jpg" alt="Tasty dessert creation">
-      <!-- Add more images as desired -->
-    </div>
-  </section>
-</main>
+  </main>
+  <footer>
+    <p>&copy; 2025 The Warsaw Table | Site created by Natasha K. </p>
+  </footer>
+  <script>
+    function openLightbox(img) {
+      var modal = document.getElementById('lightbox-modal');
+      var modalImg = document.getElementById('lightbox-img');
+      var captionText = document.getElementById('lightbox-caption');
+      modal.style.display = "flex";
+      modalImg.src = img.src;
+      captionText.innerHTML = img.alt;
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      var modal = document.getElementById('lightbox-modal');
+      modal.style.display = "none";
+      document.body.style.overflow = '';
+    }
+  </script>
+</body>
+</html>
