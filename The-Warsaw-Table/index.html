@@ -7,6 +7,63 @@
   <link rel="stylesheet" href="style.css">
   <!-- Google Fonts for classy look -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900;700;400&display=swap" rel="stylesheet">
+  <style>
+    /* Minor layout improvements, keeping your color scheme */
+    .restaurant-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
+      justify-content: center;
+    }
+    .restaurant-card {
+      background: #212121;
+      color: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      max-width: 350px;
+      flex: 1 1 300px;
+      margin: 1em 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform 0.15s;
+    }
+    .restaurant-card:hover {
+      transform: translateY(-5px) scale(1.03);
+    }
+    .restaurant-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .cuisine {
+      color: #fff;
+      background: #c62828;
+      border-radius: 8px;
+      padding: 2px 8px;
+      display: inline-block;
+      margin-bottom: 8px;
+      font-size: 0.95em;
+      margin-top: 6px;
+    }
+    .price {
+      font-weight: 600;
+      color: #ffb300;
+    }
+    @media (max-width: 900px) {
+      .restaurant-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+      .restaurant-card {
+        max-width: 95vw;
+      }
+    }
+    .map-section {
+      margin: 3em 0 2em 0;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <!-- Header/Nav -->
@@ -23,7 +80,6 @@
 
   <!-- Hero Section -->
   <header class="hero-section">
-    
     <div class="hero-overlay"></div>
     <h1 class="site-title">The Warsaw Table</h1>
   </header>
@@ -35,48 +91,90 @@
 
       <!-- N31 by Robert Sowa -->
       <div class="restaurant-card">
-       
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80" alt="N31 by Robert Sowa interior" class="restaurant-image" />
         <div class="restaurant-details">
+          <span class="cuisine">International & Polish</span>
           <h3>
-            <a href="https://www.google.com/maps/search/?api=1&query=N31+by+Robert+Sowa+Warsaw" target="_blank">
-              N31 by Robert Sowa
-            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=N31+by+Robert+Sowa+Warsaw" target="_blank" style="color:inherit;">N31 by Robert Sowa</a>
           </h3>
           <p class="price">~700 zł for two</p>
           <p class="review">
-            A luxurious dining experience with mixed International and Polish cuisine. Quite costly but perfect for celebrations.
+            A luxurious dining experience with a mix of international and Polish cuisine. Quite costly but perfect for celebrations.
           </p>
         </div>
       </div>
 
       <!-- Soul Kitchen -->
       <div class="restaurant-card">
-     
+        <img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?auto=format&fit=crop&w=800&q=80" alt="Soul Kitchen Warsaw" class="restaurant-image" />
         <div class="restaurant-details">
+          <span class="cuisine">Modern European</span>
           <h3>
-            <a href="https://www.google.com/maps/search/?api=1&query=Soul+Kitchen+Warsaw" target="_blank">
-              Soul Kitchen
-            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Soul+Kitchen+Warsaw" target="_blank" style="color:inherit;">Soul Kitchen</a>
           </h3>
           <p class="price">~500 zł for two</p>
           <p class="review">
-            Modern comfort food in a well-lit, stylish setting. We loved the attentive service and creative seasonal menu. A memorable night out!
+            Modern comfort food in a well-lit, stylish setting. Attentive service and a creative seasonal menu.
           </p>
         </div>
       </div>
 
-      <!-- Hoza Argentine -->
+      <!-- Hoża Argentine Steakhouse -->
       <div class="restaurant-card">
-       
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80" alt="Hoża Argentine Steakhouse" class="restaurant-image" />
         <div class="restaurant-details">
+          <span class="cuisine">Argentine Steakhouse</span>
           <h3>
-            <a href="https://www.google.com/maps/search/?api=1&query=Hoza+Argentine+Steakhouse+Warsaw" target="_blank">
-              Hoża Argentine Steakhouse
-            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Hoza+Argentine+Steakhouse+Warsaw" target="_blank" style="color:inherit;">Hoża Argentine Steakhouse</a>
           </h3>
           <p class="price">~400 zł for two</p>
           <p class="review">
-            Amazing steaks and a real South American vibe. It is the most affordable on this list, but it is of great quality and a fun spot for meat lovers. It is undoubtedly the best restaurant to get cheesecake. We left full and happy!
+            Amazing steaks and a real South American vibe. Great quality and a fun spot for meat lovers.
+          </p>
+        </div>
+      </div>
+
+      <!-- Belvedere -->
+      <div class="restaurant-card">
+        <img src="https://www.belvedere.com.pl/wp-content/uploads/2022/10/belvedere-restauracja-warszawa-palmiarnia-wnetrze.jpg" alt="Belvedere Warsaw" class="restaurant-image" />
+        <div class="restaurant-details">
+          <span class="cuisine">Polish Fine Dining</span>
+          <h3>
+            <a href="https://www.google.com/maps/search/?api=1&query=Belvedere+Warsaw" target="_blank" style="color:inherit;">Belvedere</a>
+          </h3>
+          <p class="price">~800 zł for two</p>
+          <p class="review">
+            Located in the beautiful New Orangery of Łazienki Park, Belvedere is renowned for elegant Polish cuisine in a stunning setting.
+          </p>
+        </div>
+      </div>
+
+      <!-- Stary Dom -->
+      <div class="restaurant-card">
+        <img src="https://www.restauracjastarydom.pl/wp-content/uploads/2019/03/restauracja-warszawa-stary-dom-wnetrze3.jpg" alt="Stary Dom Warsaw" class="restaurant-image" />
+        <div class="restaurant-details">
+          <span class="cuisine">Traditional Polish</span>
+          <h3>
+            <a href="https://www.google.com/maps/search/?api=1&query=Stary+Dom+Warsaw" target="_blank" style="color:inherit;">Stary Dom</a>
+          </h3>
+          <p class="price">~300 zł for two</p>
+          <p class="review">
+            Classic Polish dishes served in a warm, rustic atmosphere. Known for their homemade pierogi and hearty soups.
+          </p>
+        </div>
+      </div>
+
+      <!-- U Fukiera -->
+      <div class="restaurant-card">
+        <img src="https://www.ufukiera.pl/wp-content/uploads/2020/03/galeria-wnetrze-1.jpg" alt="U Fukiera Warsaw" class="restaurant-image" />
+        <div class="restaurant-details">
+          <span class="cuisine">Historic Polish</span>
+          <h3>
+            <a href="https://www.google.com/maps/search/?api=1&query=U+Fukiera+Warsaw" target="_blank" style="color:inherit;">U Fukiera</a>
+          </h3>
+          <p class="price">~400 zł for two</p>
+          <p class="review">
+            One of Warsaw’s oldest restaurants, offering a romantic setting and traditional Polish recipes.
           </p>
         </div>
       </div>
@@ -84,8 +182,18 @@
     </div>
   </main>
 
+  <section class="map-section">
+    <h2>Map of Featured Restaurants</h2>
+    <p>(You can embed a custom Google Map here with your restaurant locations.)</p>
+    <!-- Example embed (replace with your own Google My Maps link if desired) -->
+    <!--
+    <iframe src="YOUR_GOOGLE_MAP_EMBED_URL" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    -->
+  </section>
+
   <footer>
-    <p>&copy; 2025 Natasha K. </p>
+    <p>&copy; 2025 Natasha K.</p>
   </footer>
 </body>
 </html>
+      
