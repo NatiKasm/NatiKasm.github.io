@@ -213,7 +213,7 @@
     }
 
     footer {
-      background: var(--bg-block);
+      background: var(--bg-block);FLEX
       color: var(--font-secondary);
       font-size: 0.93em;
       padding: 0.7em 0;
@@ -245,7 +245,6 @@
       <div class="nav-toggle" id="navToggle">&#9776;</div>
     </div>
   </nav>
-
   <main>
     <!-- Each section has class "page-section" and only one has "active" at a time -->
     <section id="hero" class="page-section active">
@@ -377,13 +376,11 @@ I'm currently working as an Assistant, where I leverage my technical skills to s
         <ul class="contact-list"
           <li>📧 Email: <a href="mailto:your.email@example.com">info@natasha.com</a></li>
           <li>🔗 GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/NatiKasm</a></li>
-      
         </ul>
         <p>Let’s build something together. Whether you're a startup, a solo founder, or a small business, I can help you turn your idea into a sleek, modern web experience.</p>
       </div>
     </section>
   </main>
-
   <footer>
     <div class="container">
       &copy; 2025 Nati Kasm. All Rights Reserved.
@@ -394,7 +391,6 @@ I'm currently working as an Assistant, where I leverage my technical skills to s
     document.addEventListener('DOMContentLoaded', function() {
       const navLinks = document.querySelectorAll('.nav-links a, .nav-btn');
       const sections = document.querySelectorAll('.page-section');
-
       function showSection(id) {
         sections.forEach(sec => {
           if (sec.id === id) {
