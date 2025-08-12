@@ -1,0 +1,91 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  color: #002F6C;
+  line-height: 1.6;
+}
+nav {
+  background: #001a3c;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 1rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+nav a:hover {
+  color: #800020;
+}
+header h1 {
+  font-weight: 600;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+header p {
+  font-weight: 400;
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto 1.5rem auto;
+  text-align: center;
+}
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+section {
+  margin-bottom: 3rem;
+}
+h2 {
+  font-weight: 600;
+  font-size: 2rem;
+  border-bottom: 3px solid #800020;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+.templates-list, .blog-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 1.5rem;
+}
+.template-card, .book-card, .blog-card {
+  border: 2px solid #800020;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.template-card h3, .book-card h3, .blog-card h3 {
+  color: #002F6C;
+  margin-bottom: 0.5rem;
+}
+.template-card a, .book-card a, .blog-card a {
+  background: #800020;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  transition: background 0.3s ease;
+  margin-top: 1rem;
+  text-decoration: none;
+  display: inline-block;
+}
+.template-card a:hover, .book-card a:hover, .blog-card a:hover {
+  background: #5b0017;
+}
