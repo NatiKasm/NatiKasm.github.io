@@ -4,11 +4,112 @@
   <meta charset="UTF-8">
   <title>The Warsaw Table</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
-  <!-- Google Fonts for classy look -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900;700;400&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Classy and readable -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* Minor layout improvements, keeping your color scheme */
+    :root {
+      --primary-bg: #232526;
+      --secondary-bg: #31363b;
+      --accent: #ffd369;
+      --danger: #ff6e7f;
+      --info: #bfe9ff;
+      --text-light: #f4f4f4;
+      --card-shadow: 0 4px 20px rgba(0,0,0,0.16);
+      --border-radius: 18px;
+    }
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      background: linear-gradient(120deg, var(--primary-bg) 0%, #414345 100%);
+      color: var(--text-light);
+      margin: 0;
+      min-height: 100vh;
+    }
+    .main-nav {
+      background: #222831;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .nav-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7em 1.6em;
+    }
+    .nav-title a {
+      color: var(--accent);
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 900;
+      text-decoration: none;
+      font-size: 2em;
+      letter-spacing: 1.5px;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.14);
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.8em;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      color: #eeeeee;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1em;
+      transition: color 0.2s;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+    }
+    .hero-section {
+      background: linear-gradient(120deg, #ffb347cc 0%, #ffcc33dd 100%), url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1200&q=80') center/cover;
+      color: #232526;
+      padding: 4.5em 0 3em 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.13);
+      z-index: 1;
+    }
+    .site-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 3.4rem;
+      z-index: 2;
+      position: relative;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-shadow: 0 2px 32px rgba(0,0,0,0.38);
+      margin-top: 0;
+      margin-bottom: 0.7em;
+    }
+    .featured-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.2em 1.5em 1.5em 1.5em;
+    }
+    .featured-section h2 {
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: var(--accent);
+      font-size: 2.3rem;
+      text-align: center;
+      margin-bottom: 1.8em;
+      margin-top: 0;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
     .restaurant-cards {
       display: flex;
       flex-wrap: wrap;
@@ -16,39 +117,79 @@
       justify-content: center;
     }
     .restaurant-card {
-      background: #212121;
-      color: #fff;
-      border-radius: 16px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-      max-width: 350px;
-      flex: 1 1 300px;
+      background: var(--secondary-bg);
+      color: var(--text-light);
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
+      max-width: 340px;
+      flex: 1 1 290px;
       margin: 1em 0;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      transition: transform 0.15s;
+      border: 1.5px solid #ffd36930;
+      transition: transform 0.16s, box-shadow 0.16s;
     }
     .restaurant-card:hover {
-      transform: translateY(-5px) scale(1.03);
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 8px 28px 2px rgba(0,0,0,0.22);
+      border-color: var(--accent);
     }
     .restaurant-image {
       width: 100%;
       height: 180px;
       object-fit: cover;
+      border-top-left-radius: var(--border-radius);
+      border-top-right-radius: var(--border-radius);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .restaurant-details {
+      padding: 1.2em 1.35em 1.2em 1.35em;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+      font-size: 1.07em;
+      line-height: 1.62;
     }
     .cuisine {
-      color: #fff;
-      background: #c62828;
-      border-radius: 8px;
-      padding: 2px 8px;
+      color: #232526;
+      background: linear-gradient(90deg, var(--danger) 0%, var(--info) 100%);
+      border-radius: 10px;
+      padding: 3px 13px;
       display: inline-block;
-      margin-bottom: 8px;
-      font-size: 0.95em;
-      margin-top: 6px;
+      margin-bottom: 0.5em;
+      font-size: 1em;
+      font-weight: 700;
+      box-shadow: 0 1px 4px rgba(255,255,255,0.08);
+      letter-spacing: 0.7px;
+      border: none;
+    }
+    .restaurant-details h3 {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.25em;
+      margin: 0.1em 0;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: 0.5px;
+    }
+    .restaurant-details h3 a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.17s;
+    }
+    .restaurant-details h3 a:hover {
+      color: var(--accent);
+      text-decoration: underline dotted;
     }
     .price {
-      font-weight: 600;
-      color: #ffb300;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.2em;
+    }
+    .review {
+      color: #e8e8e8;
+      font-size: 1em;
+      margin-bottom: 0.15em;
     }
     @media (max-width: 900px) {
       .restaurant-cards {
@@ -58,15 +199,40 @@
       .restaurant-card {
         max-width: 95vw;
       }
+      .featured-section {
+        padding: 1.5em 0.5em 1.2em 0.5em;
+      }
     }
     .map-section {
       margin: 3em 0 2em 0;
       text-align: center;
     }
+    .map-section h2 {
+      color: var(--accent);
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 2em;
+      margin-bottom: 0.5em;
+      font-weight: 700;
+    }
+    .map-section p {
+      color: #eeeeee;
+      margin-bottom: 1.5em;
+      font-size: 1.08em;
+      opacity: 0.95;
+    }
+    footer {
+      background: #222831;
+      color: var(--accent);
+      text-align: center;
+      padding: 1.35em 0;
+      font-size: 1.12em;
+      letter-spacing: 0.3px;
+      margin-top: 3em;
+    }
   </style>
 </head>
 <body>
-  <!-- Header/Nav -->
+  <!-- Navigation -->
   <nav class="main-nav">
     <div class="nav-content">
       <span class="nav-title"><a href="index.html">The Warsaw Table</a></span>
@@ -78,7 +244,7 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <header class="hero-section">
     <div class="hero-overlay"></div>
     <h1 class="site-title">The Warsaw Table</h1>
@@ -88,14 +254,13 @@
   <main class="featured-section">
     <h2>Featured Restaurants</h2>
     <div class="restaurant-cards">
-
       <!-- N31 by Robert Sowa -->
       <div class="restaurant-card">
         <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80" alt="N31 by Robert Sowa interior" class="restaurant-image" />
         <div class="restaurant-details">
           <span class="cuisine">International & Polish</span>
           <h3>
-            <a href="https://www.google.com/maps/search/?api=1&query=N31+by+Robert+Sowa+Warsaw" target="_blank" style="color:inherit;">N31 by Robert Sowa</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=N31+by+Robert+Sowa+Warsaw" target="_blank">N31 by Robert Sowa</a>
           </h3>
           <p class="price">~700 zł for two</p>
           <p class="review">
@@ -103,14 +268,13 @@
           </p>
         </div>
       </div>
-
       <!-- Soul Kitchen -->
       <div class="restaurant-card">
         <img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?auto=format&fit=crop&w=800&q=80" alt="Soul Kitchen Warsaw" class="restaurant-image" />
         <div class="restaurant-details">
           <span class="cuisine">Modern European</span>
           <h3>
-            <a href="https://www.google.com/maps/search/?api=1&query=Soul+Kitchen+Warsaw" target="_blank" style="color:inherit;">Soul Kitchen</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Soul+Kitchen+Warsaw" target="_blank">Soul Kitchen</a>
           </h3>
           <p class="price">~500 zł for two</p>
           <p class="review">
@@ -118,14 +282,13 @@
           </p>
         </div>
       </div>
-
       <!-- Hoża Argentine Steakhouse -->
       <div class="restaurant-card">
         <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80" alt="Hoża Argentine Steakhouse" class="restaurant-image" />
         <div class="restaurant-details">
           <span class="cuisine">Argentine Steakhouse</span>
           <h3>
-            <a href="https://www.google.com/maps/search/?api=1&query=Hoza+Argentine+Steakhouse+Warsaw" target="_blank" style="color:inherit;">Hoża Argentine Steakhouse</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Hoza+Argentine+Steakhouse+Warsaw" target="_blank">Hoża Argentine Steakhouse</a>
           </h3>
           <p class="price">~400 zł for two</p>
           <p class="review">
@@ -133,14 +296,13 @@
           </p>
         </div>
       </div>
-
       <!-- Belvedere -->
       <div class="restaurant-card">
         <img src="https://www.belvedere.com.pl/wp-content/uploads/2022/10/belvedere-restauracja-warszawa-palmiarnia-wnetrze.jpg" alt="Belvedere Warsaw" class="restaurant-image" />
         <div class="restaurant-details">
           <span class="cuisine">Polish Fine Dining</span>
           <h3>
-            <a href="https://www.google.com/maps/search/?api=1&query=Belvedere+Warsaw" target="_blank" style="color:inherit;">Belvedere</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Belvedere+Warsaw" target="_blank">Belvedere</a>
           </h3>
           <p class="price">~800 zł for two</p>
           <p class="review">
@@ -148,14 +310,13 @@
           </p>
         </div>
       </div>
-
       <!-- Stary Dom -->
       <div class="restaurant-card">
         <img src="https://www.restauracjastarydom.pl/wp-content/uploads/2019/03/restauracja-warszawa-stary-dom-wnetrze3.jpg" alt="Stary Dom Warsaw" class="restaurant-image" />
         <div class="restaurant-details">
           <span class="cuisine">Traditional Polish</span>
           <h3>
-            <a href="https://www.google.com/maps/search/?api=1&query=Stary+Dom+Warsaw" target="_blank" style="color:inherit;">Stary Dom</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Stary+Dom+Warsaw" target="_blank">Stary Dom</a>
           </h3>
           <p class="price">~300 zł for two</p>
           <p class="review">
@@ -163,14 +324,13 @@
           </p>
         </div>
       </div>
-
       <!-- U Fukiera -->
       <div class="restaurant-card">
         <img src="https://www.ufukiera.pl/wp-content/uploads/2020/03/galeria-wnetrze-1.jpg" alt="U Fukiera Warsaw" class="restaurant-image" />
         <div class="restaurant-details">
           <span class="cuisine">Historic Polish</span>
           <h3>
-            <a href="https://www.google.com/maps/search/?api=1&query=U+Fukiera+Warsaw" target="_blank" style="color:inherit;">U Fukiera</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=U+Fukiera+Warsaw" target="_blank">U Fukiera</a>
           </h3>
           <p class="price">~400 zł for two</p>
           <p class="review">
@@ -178,14 +338,12 @@
           </p>
         </div>
       </div>
-
     </div>
   </main>
 
   <section class="map-section">
     <h2>Map of Featured Restaurants</h2>
     <p>(You can embed a custom Google Map here with your restaurant locations.)</p>
-    <!-- Example embed (replace with your own Google My Maps link if desired) -->
     <!--
     <iframe src="YOUR_GOOGLE_MAP_EMBED_URL" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     -->
@@ -196,4 +354,3 @@
   </footer>
 </body>
 </html>
-      
